@@ -31,28 +31,3 @@
   navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
   navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
 })();
-
-// ---- Active nav highlight (single-page scroll spy) ----
-(function(){
-  const links = Array.from(document.querySelectorAll('.nav-links a'));
-  if (!links.length) return;
-  const map = {};
-  links.forEach(a => {
-    const href = a.getAttribute('href');
-    if (href && href.startsWith('#')) map[href.slice(1)] = a;
-  });
-  const sections = Object.keys(map)
-    .map(id => document.getElementById(id))
-    .filter(Boolean);
-  if (!sections.length) return;
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting){
-        links.forEach(l => l.classList.remove('active'));
-        const link = map[e.target.id];
-        if (link) link.classList.add('active');
-      }
-    });
-  }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
-  sections.forEach(s => obs.observe(s));
-})();
