@@ -108,7 +108,7 @@ section[id]{scroll-margin-top:84px;}
 /* ---------- People ---------- */
 .director{display:grid;grid-template-columns:240px 1fr;gap:36px;align-items:center;
   background:var(--card);border-radius:var(--radius);padding:34px;box-shadow:var(--shadow);}
-.director .photo{width:210px;height:210px;border-radius:50%;object-fit:cover;margin:0 auto;
+.director .photo{width:210px;height:210px;border-radius:0;object-fit:cover;margin:0 auto;
   border:5px solid var(--primary-light);box-shadow:var(--shadow-sm);background:#dfe7f2;}
 .director h3{margin:0 0 6px;font-size:26px;}
 .director h3 .cn{font-size:16px;color:var(--muted);font-weight:600;margin-left:8px;letter-spacing:0;}

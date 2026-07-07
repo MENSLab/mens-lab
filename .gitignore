@@ -5,3 +5,6 @@
 # node / tooling
 node_modules/
 *.log
+
+# project-internal notes (do not publish)
+.workbuddy/
