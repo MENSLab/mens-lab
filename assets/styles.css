@@ -112,6 +112,7 @@ section[id]{scroll-margin-top:84px;}
   border:5px solid var(--primary-light);box-shadow:var(--shadow-sm);background:#dfe7f2;}
 .director h3{margin:0 0 6px;font-size:26px;}
 .director h3 .cn{font-size:16px;color:var(--muted);font-weight:600;margin-left:8px;letter-spacing:0;}
+.director h3 .co-sup{font-size:13px;color:#9aa0a6;font-weight:400;font-style:italic;margin-left:6px;}
 .director .bio{color:var(--muted);margin:0 0 18px;font-size:15.5px;}
 .director .bio strong{color:var(--ink);}
 
