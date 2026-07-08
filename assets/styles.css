@@ -112,6 +112,7 @@ section{padding:88px 0;}
   background:var(--card);border-radius:var(--radius);padding:34px;box-shadow:var(--shadow);}
 .director .photo{width:240px;height:331px;object-fit:cover;
   border:5px solid var(--primary-light);box-shadow:var(--shadow-sm);background:#dfe7f2;}
+.director:not(.student) .photo{transform:translateY(14px);}
 .director h3{margin:0 0 6px;font-size:26px;}
 .director h3 .cn{font-size:16px;color:var(--muted);font-weight:600;margin-left:8px;letter-spacing:0;}
 .director .bio{color:var(--muted);margin:0 0 18px;font-size:15.5px;}
@@ -130,6 +131,20 @@ section{padding:88px 0;}
   transition:transform .15s,box-shadow .2s,background .2s;border:0;}
 .btn-primary{background:var(--primary);color:#fff;box-shadow:0 10px 30px rgba(0,120,255,.25);}
 .btn-primary:hover{transform:translateY(-2px);}
+
+/* ---------- Publications ---------- */
+.pub-list{max-width:1120px;}
+.pub-year{margin:0 0 28px;font-size:34px;line-height:1;font-weight:900;color:#1f5eea;letter-spacing:.5px;}
+.pub-item{background:#fff;border-left:6px solid #e0edf5;padding:28px 32px;margin:0 0 28px;
+  box-shadow:var(--shadow-sm);}
+.pub-item h4{margin:0 0 8px;font-size:21px;line-height:1.35;font-weight:850;color:#35465b;}
+.pub-item h4 a{color:inherit;}
+.pub-item h4 a:hover{color:var(--primary);}
+.pub-authors,.pub-venue{margin:0;color:#3f5065;font-size:18px;line-height:1.55;}
+.pub-authors{font-weight:400;}
+.pub-authors sup{font-size:.72em;line-height:0;}
+.pub-authors .note{font-size:.92em;color:var(--muted);}
+.pub-venue strong{color:#35465b;}
 
 /* ---------- Opportunities ---------- */
 .opportunities-text{max-width:880px;color:var(--muted);font-size:16.5px;}
@@ -166,6 +181,10 @@ footer .copy{grid-column:3;justify-self:end;font-size:13.5px;}
   section{padding:60px 0;}
   .page-hero{padding:104px 0 48px;}
   .mens-expand{font-size:18px;}
+  .pub-year{font-size:30px;}
+  .pub-item{padding:22px 20px;}
+  .pub-item h4{font-size:18px;}
+  .pub-authors,.pub-venue{font-size:15.5px;}
   footer .footer-inner{grid-template-columns:1fr;justify-items:center;gap:10px;text-align:center;}
   footer .fbrand, footer .copy{grid-column:auto;}
   footer .copy{justify-self:center;}
