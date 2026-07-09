@@ -6,7 +6,230 @@
 <title>MENS Lab — Mind, Embodiment, NeuroAI &amp; Self-evolution</title>
 <meta name="description" content="MENS Lab (Mind, Embodiment, NeuroAI, and Self-evolution) — led by Dr. Hongliang Lu at Southern University of Science and Technology (SUSTech). Research in embodied intelligence, world models, autonomous driving, and LLM agents." />
 <link rel="icon" type="image/png" href="assets/icon.png" />
-<link rel="stylesheet" href="assets/styles.css" />
+<style>
+:root{
+  --primary:#0078ff;
+  --primary-dark:#0056c7;
+  --primary-light:#e8f1ff;
+  --ink:#1e1e1e;
+  --muted:#4e4e4e;
+  --bg:#f5f5f5;
+  --card:#ffffff;
+  --line:#e6e6e6;
+  --container:1200px;
+  --radius:14px;
+  --shadow:0 10px 30px rgba(20,40,80,.08);
+  --shadow-sm:0 4px 14px rgba(20,40,80,.06);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  color:var(--ink);background:var(--bg);line-height:1.7;-webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+.container{max-width:var(--container);margin:0 auto;padding:0 24px;}
+section{padding:88px 0;}
+.section-head{margin-bottom:40px;}
+.section-head h2{font-size:36px;margin:0 0 14px;font-weight:800;letter-spacing:-.5px;color:var(--primary);}
+.title-line{width:60px;height:4px;background:var(--primary);border-radius:4px;}
+.lead{color:var(--muted);max-width:760px;font-size:16px;}
+.sub-head{margin:48px 0 16px;font-size:22px;font-weight:800;color:var(--ink);letter-spacing:.3px;}
+.sub-head::after{content:"";display:block;width:40px;height:3px;background:var(--primary);border-radius:3px;margin-top:8px;}
+
+/* ---------- Top navigation ---------- */
+.topnav{position:sticky;top:0;z-index:50;background:rgba(6,18,38,.92);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(255,255,255,.08);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:66px;}
+.brand{font-weight:900;font-size:21px;letter-spacing:1px;color:#fff;}
+.nav-links{display:flex;gap:26px;list-style:none;margin:0;padding:0;flex-wrap:wrap;}
+.nav-links a{position:relative;color:rgba(255,255,255,.82);font-weight:600;font-size:15px;transition:color .2s;}
+.nav-links a:hover{color:#7cc0ff;}
+.nav-links a.active{color:#fff;}
+.nav-links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;
+  background:var(--primary);border-radius:2px;}
+.nav-toggle{display:none;background:none;border:0;color:#fff;font-size:26px;cursor:pointer;line-height:1;}
+
+/* ---------- Home hero ---------- */
+.hero{
+  position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;
+  text-align:center;color:#fff;overflow:hidden;
+  background:radial-gradient(1200px 600px at 50% -10%,rgba(0,120,255,.45),transparent 60%),
+             linear-gradient(135deg,#061226 0%,#0a2752 45%,#0078ff 120%);
+}
+.hero::after{
+  content:"";position:absolute;inset:0;
+  background-image:radial-gradient(rgba(255,255,255,.08) 1px,transparent 1px);
+  background-size:26px 26px;opacity:.5;pointer-events:none;
+}
+.hero .container{position:relative;z-index:2;}
+.hero h1{font-size:clamp(52px,9vw,104px);margin:0;font-weight:900;letter-spacing:2px;
+  text-shadow:0 8px 40px rgba(0,0,0,.3);}
+.hero .sub{font-size:clamp(16px,2.4vw,20px);color:rgba(255,255,255,.82);margin:10px 0 6px;font-weight:500;}
+.hero .hero-cn{font-size:clamp(18px,3vw,26px);color:rgba(255,255,255,.92);margin:6px 0 0;font-weight:600;letter-spacing:6px;}
+
+/* MENS animated expansion */
+.mens-expand{
+  margin:30px auto 8px;font-size:clamp(17px,2.6vw,24px);font-weight:600;
+  color:rgba(255,255,255,.95);max-width:880px;
+}
+.mens-expand .eq{color:rgba(255,255,255,.6);margin:0 8px;}
+.mens-expand .word{
+  display:inline-block;opacity:0;transform:translateY(14px);
+  transition:opacity .5s ease,transform .5s ease;
+  background:linear-gradient(90deg,#7cc0ff,#ffffff);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  font-weight:800;margin:0;
+}
+.mens-expand .ul{border-bottom:2px solid #fff;display:inline-block;padding-bottom:1px;}
+.mens-expand .word.show{opacity:1;transform:translateY(0);}
+.mens-expand .sep{opacity:0;transition:opacity .4s ease;color:rgba(255,255,255,.7);margin:0 10px 0 2px;}
+.mens-expand .sep.show{opacity:1;}
+
+.scroll-ind{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2;
+  color:rgba(255,255,255,.7);font-size:12px;letter-spacing:.2em;animation:bob 1.8s ease-in-out infinite;}
+@keyframes bob{50%{transform:translate(-50%,8px);}}
+
+/* ---------- About ---------- */
+.about-body{display:grid;grid-template-columns:1fr 320px;gap:40px;align-items:center;}
+.about-figure{margin:0;}
+.about-figure img{width:100%;height:auto;display:block;}
+.about-text{max-width:none;}
+.about-text p{color:var(--muted);margin:0 0 16px;font-size:16.5px;}
+
+/* ---------- Directions ---------- */
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+.rcard{position:relative;background:var(--card);border-radius:var(--radius);padding:94px 24px 28px;box-shadow:var(--shadow-sm);
+  border:1px solid var(--line);transition:transform .2s,box-shadow .2s;}
+.rcard:hover{transform:translateY(-6px);box-shadow:var(--shadow);}
+.rcard-icon{position:absolute;top:18px;left:18px;width:68px;height:68px;object-fit:contain;z-index:1;}
+.rcard h3{margin:0 0 10px;font-size:19px;color:var(--ink);}
+.rcard p{margin:0;color:var(--muted);font-size:14.5px;}
+
+/* ---------- People ---------- */
+.director{display:grid;grid-template-columns:240px 1fr;gap:36px;align-items:start;
+  background:var(--card);border-radius:var(--radius);padding:34px;box-shadow:var(--shadow);}
+.director .photo{width:240px;height:331px;object-fit:cover;
+  border:5px solid var(--primary-light);box-shadow:var(--shadow-sm);background:#dfe7f2;}
+.director:not(.student) .photo{transform:translateY(14px);}
+.director h3{margin:0 0 6px;font-size:26px;}
+.director h3 .cn{font-size:16px;color:var(--muted);font-weight:600;margin-left:8px;letter-spacing:0;}
+.director .bio{color:var(--muted);margin:0 0 18px;font-size:15.5px;}
+.director .bio strong{color:var(--ink);}
+.scholar-link{margin-left:18px;color:var(--primary);font-weight:700;}
+.scholar-link:hover{color:var(--primary-dark);}
+
+/* student cards */
+.director.student{grid-template-columns:165px 1fr;gap:26px;padding:22px 26px;
+  box-shadow:var(--shadow-sm);border:1px solid var(--line);border-left:4px solid var(--primary);}
+.director.student .photo{width:165px;height:165px;object-fit:cover;border:4px solid var(--primary-light);}
+.director.student h3{font-size:21px;}
+.co-sup{font-size:14px;color:var(--muted);font-style:italic;font-weight:400;}
+.director.student .bio{font-size:14.5px;margin-bottom:0;}
+.director.student + .director.student{margin-top:34px;}
+
+/* ---------- Publications ---------- */
+.pub-list{max-width:1120px;}
+
+.pub-year-group{
+  background:var(--card);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow-sm);
+  border:1px solid var(--line);
+  padding:28px 32px;
+  margin-bottom:28px;
+}
+
+.pub-year{
+  margin:0 0 18px;
+  font-size:22px;
+  line-height:1;
+  font-weight:900;
+  color:#1f5eea;
+  letter-spacing:.5px;
+}
+
+.pub-item{
+  background:none;
+  border-left:none;
+  padding:0 0 16px;
+  margin:0 0 16px;
+  box-shadow:none;
+  border-bottom:1px solid var(--line);
+}
+.pub-item:last-child{
+  border-bottom:none;
+  padding-bottom:0;
+  margin-bottom:0;
+}
+
+.pub-item h4{
+  margin:0 0 4px;
+  font-size:16px;
+  line-height:1.4;
+  font-weight:750;
+  color:#35465b;
+}
+.pub-item h4 a{color:inherit;}
+.pub-item h4 a:hover{color:var(--primary);}
+
+.pub-authors,.pub-venue{
+  margin:0;
+  color:#3f5065;
+  font-size:13.5px;
+  line-height:1.55;
+}
+.pub-authors{font-weight:400;}
+.pub-authors sup{font-size:.85em;line-height:0;font-weight:700;}
+.pub-authors .note{font-size:.92em;color:var(--muted);}
+.pub-venue strong{color:#35465b;}
+
+/* ---------- Opportunities ---------- */
+.opportunities-text{max-width:880px;color:var(--muted);font-size:16.5px;}
+.opportunities-text p{margin:0 0 16px;}
+.opportunities-text p:last-child{margin-bottom:0;font-weight:700;color:var(--ink);}
+
+/* ---------- Footer ---------- */
+footer{background:#0a1f3d;color:rgba(255,255,255,.75);padding:40px 0;margin-top:0;}
+footer .footer-inner{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;}
+footer .fbrand{grid-column:2;justify-self:center;color:#fff;font-weight:800;font-size:18px;letter-spacing:.5px;}
+footer .copy{grid-column:3;justify-self:end;font-size:13.5px;}
+
+/* ---------- Responsive ---------- */
+@media (max-width:980px){
+  .grid-4{grid-template-columns:repeat(2,1fr);}
+  .about-body{grid-template-columns:1fr;gap:28px;}
+  .director{grid-template-columns:1fr;text-align:center;}
+  .director .photo{width:240px;height:auto;max-width:260px;margin:0 auto;}
+  .director.student{grid-template-columns:1fr;}
+  .director.student .photo{width:165px;height:165px;margin:0 auto;}
+}
+@media (max-width:768px){
+  .nav-toggle{display:block;}
+  .nav-links{position:absolute;top:66px;left:0;right:0;flex-direction:column;gap:0;
+    background:#061226;border-bottom:1px solid rgba(255,255,255,.08);
+    max-height:0;overflow:hidden;transition:max-height .3s ease;}
+  .nav-links.open{max-height:520px;}
+  .nav-links li{padding:0 24px;}
+  .nav-links a{display:block;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06);}
+  .nav-links a.active::after{display:none;}
+}
+@media (max-width:680px){
+  .grid-4{grid-template-columns:1fr;}
+  section{padding:60px 0;}
+  .mens-expand{font-size:18px;}
+  .pub-year-group{padding:22px 20px;}
+  .pub-year{font-size:20px;}
+  .pub-item h4{font-size:15px;}
+  .pub-authors,.pub-venue{font-size:13px;}
+  footer .footer-inner{grid-template-columns:1fr;justify-items:center;gap:10px;text-align:center;}
+  footer .fbrand, footer .copy{grid-column:auto;}
+  footer .copy{justify-self:center;}
+}
+</style>
 </head>
 <body>
 
@@ -34,7 +257,6 @@
     <h1>MENS Lab</h1>
     <p class="hero-cn">具身心智与进化智能实验室</p>
     <p class="sub">Embodied Intelligence · World Models · Autonomous Driving · LLM Agents</p>
-
     <p class="mens-expand">
       MENS
       <span class="eq">=</span>
@@ -103,7 +325,6 @@
       <div class="title-line"></div>
     </div>
 
-    <!-- ===== Supervisor ===== -->
     <div class="sub-head">Supervisor</div>
     <div class="director">
       <img class="photo" src="assets/lu-hongliang-long.jpg" alt="Hongliang Lu" />
@@ -115,7 +336,6 @@
       </div>
     </div>
 
-    <!-- ===== PhD Students ===== -->
     <div class="sub-head">Ph.D. Students</div>
 
     <div class="director student">
@@ -141,20 +361,17 @@
           <strong>MPhil</strong>, Zhejiang University, Sep 2022 - Jun 2025<br>
           <strong>B.Eng.</strong>, Beijing Jiaotong University, Sep 2018 - Jun 2022
         </p>
-        <p class="bio"><strong>Research:</strong> Large Language Models, Agents</p>
+        <p class="bio"><strong>Research:</strong> AI Agents, RAG, LLM Memory</p>
         <p class="bio"><strong>Contact:</strong> <a href="mailto:zshiay@connect.ust.hk">zshiay@connect.ust.hk</a></p>
       </div>
     </div>
 
-    <!-- ===== Master Students ===== -->
     <div class="sub-head">Master Students</div>
     <p class="placeholder">Coming soon.</p>
 
-    <!-- ===== Research Assistants ===== -->
     <div class="sub-head">Research Assistants</div>
     <p class="placeholder">Coming soon.</p>
 
-    <!-- ===== Alumni ===== -->
     <div class="sub-head">Alumni</div>
     <p class="placeholder">Coming soon.</p>
   </div>
@@ -168,25 +385,29 @@
       <div class="title-line"></div>
     </div>
     <div class="pub-list">
-      <h3 class="pub-year">2026</h3>
 
-      <article class="pub-item">
-        <h4>Human-inspired Data-light Cultural Alignment for Cross-regional Deployment of Autonomous Vehicles</h4>
-        <p class="pub-authors">Hongliang Lu<sup>*</sup>, Junjie Yang <span class="note">(co-first)</span>, Shuqi Shen, Zheng Zang, Yulin Li, Jiahang Cao, Chao Lu, Xinhu Zheng<sup>*</sup>, Hai Yang<sup>*</sup></p>
-        <p class="pub-venue"><strong>Nature Communications</strong>, Under Peer Review</p>
-      </article>
+      <div class="pub-year-group">
+        <h3 class="pub-year">2026</h3>
 
-      <article class="pub-item">
-        <h4>Reframing Urban Transportation As Complex Systems: A Three-Dimensional Evolutionary Perspective</h4>
-        <p class="pub-authors">Hongliang Lu, Ziyi Shi, Hui Zhong, Junjie Yang, Shuqi Shen, Yuxuan Liang, Xinhu Zheng, Chao Lu, Qiumeng Li, Meng Xu, Wei Liu, Jintao Ke, Siyuan Feng, Zheng Zhu, Yu Zheng, Chengzhong Xu, Hai Yang</p>
-        <p class="pub-venue"><strong>Engineering</strong>, Accepted in Principle</p>
-      </article>
+        <article class="pub-item">
+          <h4>Human-inspired Data-light Cultural Alignment for Cross-regional Deployment of Autonomous Vehicles</h4>
+          <p class="pub-authors"><strong>H. Lu</strong><sup>*</sup>, J. Yang <span class="note">(co-first)</span>, S. Shen, Z. Zang, Y. Li, J. Cao, C. Lu, X. Zheng, H. Yang</p>
+          <p class="pub-venue"><strong>Nature Communications</strong>, Under Peer Review</p>
+        </article>
 
-      <article class="pub-item">
-        <h4><a href="https://openreview.net/forum?id=lwxmgd3Pcq" target="_blank" rel="noopener">EvoDrive: Self-Evolving Autonomous Driving via Latent World Model-Guided Post-hoc Reflection</a></h4>
-        <p class="pub-authors">Junjie Yang, Qiming Zhang, Yuyan Li, Shuqi Shen, Yusong Huang, Yanggang Sheng, Xu Wenpeng, Ziyi Shi, Tianshun Li, Yijie Chen, Yujia Wang, Jun Ma, Xinhu Zheng, Hongliang Lu, Hai Yang</p>
-        <p class="pub-venue"><strong>NeurIPS 2026 Conference</strong>, Under Review</p>
-      </article>
+        <article class="pub-item">
+          <h4>Reframing Urban Transportation As Complex Systems: A Three-Dimensional Evolutionary Perspective</h4>
+          <p class="pub-authors"><strong>H. Lu</strong><sup>*</sup>, Z. Shi, H. Zhong, J. Yang, S. Shen, Y. Liang, X. Zheng, C. Lu, Q. Li, M. Xu, W. Liu, J. Ke, S. Feng, Z. Zhu, Y. Zheng, C. Xu, H. Yang</p>
+          <p class="pub-venue"><strong>Engineering</strong>, Accepted in Principle</p>
+        </article>
+
+        <article class="pub-item">
+          <h4><a href="https://openreview.net/forum?id=lwxmgd3Pcq" target="_blank" rel="noopener">EvoDrive: Self-Evolving Autonomous Driving via Latent World Model-Guided Post-hoc Reflection</a></h4>
+          <p class="pub-authors">J. Yang, Q. Zhang, Y. Li, S. Shen, Y. Huang, Y. Sheng, W. Xu, Z. Shi, T. Li, Y. Chen, Y. Wang, J. Ma, X. Zheng, <strong>H. Lu</strong><sup>*</sup>, H. Yang</p>
+          <p class="pub-venue"><strong>NeurIPS 2026 Conference</strong>, Under Review</p>
+        </article>
+      </div>
+
     </div>
   </div>
 </section>
@@ -236,6 +457,40 @@
   </div>
 </footer>
 
-<script src="assets/script.js"></script>
+<script>
+// ---- MENS sequential reveal ----
+(function(){
+  const words = Array.from(document.querySelectorAll('.mens-expand .word'));
+  const seps  = Array.from(document.querySelectorAll('.mens-expand .sep'));
+  if (words.length === 0) return;
+
+  let wi = 0;
+  function revealNext(){
+    if (wi < words.length){
+      words[wi].classList.add('show');
+      if (seps[wi]) seps[wi].classList.add('show');
+      wi++;
+      setTimeout(revealNext, 950);
+    } else {
+      setTimeout(resetMens, 3200);
+    }
+  }
+  function resetMens(){
+    words.forEach(w => w.classList.remove('show'));
+    seps.forEach(s => s.classList.remove('show'));
+    wi = 0; setTimeout(revealNext, 500);
+  }
+  setTimeout(revealNext, 700);
+})();
+
+// ---- Mobile nav toggle ----
+(function(){
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks  = document.querySelector('.nav-links');
+  if (!navToggle || !navLinks) return;
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+})();
+</script>
 </body>
 </html>
