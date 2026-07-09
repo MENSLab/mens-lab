@@ -139,8 +139,10 @@ section{padding:88px 0;}
   border-radius:var(--radius);
   box-shadow:var(--shadow-sm);
   border:1px solid var(--line);
-  padding:28px 32px;
+  padding:16px 32px 28px;
   margin-bottom:28px;
+  max-height:620px;
+  overflow-y:auto;
 }
 
 .pub-year{
@@ -186,6 +188,10 @@ section{padding:88px 0;}
 .pub-authors sup{font-size:.85em;line-height:0;font-weight:700;}
 .pub-authors .note{font-size:.92em;color:var(--muted);}
 .pub-venue strong{color:#35465b;}
+.pub-link{display:inline-block;margin-left:8px;padding:2px 10px;font-size:12px;font-weight:700;
+  background:#e8f1ff;color:var(--primary);border-radius:999px;text-decoration:none;
+  transition:background .2s,color .2s;}
+.pub-link:hover{background:var(--primary);color:#fff;}
 
 /* ---------- Opportunities ---------- */
 .opportunities-text{max-width:880px;color:var(--muted);font-size:16.5px;}
@@ -381,18 +387,18 @@ footer .copy{grid-column:3;justify-self:end;font-size:13.5px;}
 <section id="publications">
   <div class="container">
     <div class="section-head">
-      <h2>Publications</h2>
+      <h2>Selected Publications</h2>
       <div class="title-line"></div>
     </div>
     <div class="pub-list">
 
+      <h3 class="pub-year">2026</h3>
       <div class="pub-year-group">
-        <h3 class="pub-year">2026</h3>
 
         <article class="pub-item">
           <h4>Human-inspired Data-light Cultural Alignment for Cross-regional Deployment of Autonomous Vehicles</h4>
           <p class="pub-authors"><strong>H. Lu</strong><sup>*</sup>, J. Yang, S. Shen, Z. Zang, Y. Li, J. Cao, C. Lu, X. Zheng, H. Yang</p>
-          <p class="pub-venue"><strong>Nature Communications</strong>, Under 2nd-ground Review</p>
+          <p class="pub-venue"><strong>Nature Communications</strong>, Under Review</p>
         </article>
 
         <article class="pub-item">
@@ -405,6 +411,30 @@ footer .copy{grid-column:3;justify-self:end;font-size:13.5px;}
           <h4><a href="https://openreview.net/forum?id=lwxmgd3Pcq" target="_blank" rel="noopener">EvoDrive: Self-Evolving Autonomous Driving via Latent World Model-Guided Post-hoc Reflection</a></h4>
           <p class="pub-authors">J. Yang, Q. Zhang, Y. Li, S. Shen, Y. Huang, Y. Sheng, W. Xu, Z. Shi, T. Li, Y. Chen, Y. Wang, J. Ma, X. Zheng, <strong>H. Lu</strong><sup>*</sup>, H. Yang</p>
           <p class="pub-venue"><strong>NeurIPS 2026</strong>, Under Review</p>
+        </article>
+
+        <article class="pub-item">
+          <h4>Coordinated Pandemic Control with Large Language Model Agents as Policymaking Assistants</h4>
+          <p class="pub-authors">Z. Shi, X. Guo, <strong>H. Lu</strong><sup>*</sup>, M. Peng, H. Wang, Z. Zhu, Z. Li, Y. Liang, X. Zheng, H. Yang</p>
+          <p class="pub-venue"><strong>iScience</strong>, Under Review <a class="pub-link" href="https://arxiv.org/pdf/2601.09264" target="_blank" rel="noopener">Paper</a></p>
+        </article>
+
+        <article class="pub-item">
+          <h4>UniT: Unified Geometry Learning with Group Autoregressive Transformer</h4>
+          <p class="pub-authors">H. Wang, Y. Huang, Z. Kuang, <strong>H. Lu</strong>, X. Zheng, M. Yang, G. Hua</p>
+          <p class="pub-venue"><strong>IEEE TPAMI</strong>, Under Review <a class="pub-link" href="https://arxiv.org/pdf/2605.21131" target="_blank" rel="noopener">Paper</a></p>
+        </article>
+
+        <article class="pub-item">
+          <h4>Dual-chirality Flexagon Linkages with Infinite Eversion and Surface Reconfigurability</h4>
+          <p class="pub-authors">J. Lin, Z. Miao, H. Zhang, K. Dong, <strong>H. Lu</strong>, H. Feng, J. S. Dai</p>
+          <p class="pub-venue"><strong>PNAS</strong>, Accepted <a class="pub-link" href="https://www.pnas.org/doi/full/10.1073/pnas.2603729123" target="_blank" rel="noopener">Paper</a></p>
+        </article>
+
+        <article class="pub-item">
+          <h4>Diffusion-based 4D Trajectory Prediction and Distributed Control for UAV Swarms</h4>
+          <p class="pub-authors">T. Li, <strong>H. Lu</strong>, H. Li, X. Zheng</p>
+          <p class="pub-venue"><strong>IROS 2026</strong>, Accepted <a class="pub-link" href="https://arxiv.org/pdf/2606.31197" target="_blank" rel="noopener">Paper</a></p>
         </article>
       </div>
 
