@@ -131,6 +131,19 @@ section{padding:88px 0;}
 .director.student .bio{font-size:14.5px;margin-bottom:0;}
 .director.student + .director.student{margin-top:34px;}
 
+/* undergraduate grid — no photo, 3 per row */
+.ugrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.ucard{background:var(--card);border-radius:12px;padding:22px 20px;
+  box-shadow:var(--shadow-sm);border:1px solid var(--line);
+  border-left:3px solid var(--primary);transition:transform .2s;}
+.ucard:hover{transform:translateY(-4px);box-shadow:var(--shadow);}
+.ucard h3{margin:0 0 6px;font-size:18px;color:var(--ink);}
+.ucard h3 .cn{font-size:14px;color:var(--muted);font-weight:600;margin-left:6px;}
+.ucard .uinfo{color:var(--muted);font-size:13.5px;line-height:1.55;margin:0;}
+.ucard .uinfo strong{color:var(--ink);}
+@media (max-width:768px){.ugrid{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:520px){.ugrid{grid-template-columns:1fr;}}
+
 /* ---------- Publications ---------- */
 .pub-list{max-width:1120px;}
 
@@ -364,11 +377,38 @@ footer .copy{grid-column:3;justify-self:end;font-size:13.5px;}
         <h3>Ziyi Shi <span class="co-sup">(co-supervised)</span> <span class="cn">施子逸</span></h3>
         <p class="bio">
           <strong>Ph.D. student</strong>, The Hong Kong University of Science and Technology, Sep 2025 -<br>
-          <strong>MPhil</strong>, Zhejiang University, Sep 2022 - Jun 2025<br>
+          <strong>M.Eng.</strong>, Zhejiang University, Sep 2022 - Jun 2025<br>
           <strong>B.Eng.</strong>, Beijing Jiaotong University, Sep 2018 - Jun 2022
         </p>
         <p class="bio"><strong>Research:</strong> AI Agents, RAG, LLM Memory</p>
         <p class="bio"><strong>Contact:</strong> <a href="mailto:zshiay@connect.ust.hk">zshiay@connect.ust.hk</a></p>
+      </div>
+    </div>
+
+    <div class="director student">
+      <img class="photo" src="assets/yuyan-li.png" alt="Yuyan Li" />
+      <div>
+        <h3>Yuyan Li <span class="co-sup">(co-supervised)</span> <span class="cn">李雨嫣</span></h3>
+        <p class="bio">
+          <strong>Ph.D. student</strong>, The Hong Kong University of Science and Technology (Guangzhou), Sep 2025 -<br>
+          <strong>M.Eng.</strong>, Xidian University, Sep 2022 - Jun 2025<br>
+          <strong>B.Sc.</strong>, China University of Petroleum (East China), Sep 2018 - Jun 2022
+        </p>
+        <p class="bio"><strong>Research:</strong> Embodied Intelligence, World Models, Robot Learning, Perception and Decision-Making</p>
+        <p class="bio"><strong>Contact:</strong> <a href="mailto:yli382@connect.hkust-gz.edu.cn">yli382@connect.hkust-gz.edu.cn</a></p>
+      </div>
+    </div>
+
+    <div class="director student">
+      <img class="photo" src="assets/yusong-huang.jpg" alt="Yusong Huang" />
+      <div>
+        <h3>Yusong Huang <span class="co-sup">(co-supervised)</span> <span class="cn">黄钰淞</span></h3>
+        <p class="bio">
+          <strong>Ph.D. student</strong>, The Hong Kong University of Science and Technology (Guangzhou), Sep 2025 -<br>
+          <strong>B.Eng.</strong>, Beijing Jiaotong University, Sep 2021 - Jun 2025
+        </p>
+        <p class="bio"><strong>Research:</strong> Embodied Intelligence, World Models, Robot Manipulation</p>
+        <p class="bio"><strong>Contact:</strong> <a href="mailto:yhuang411@connect.hkust-gz.edu.cn">yhuang411@connect.hkust-gz.edu.cn</a></p>
       </div>
     </div>
 
@@ -377,6 +417,35 @@ footer .copy{grid-column:3;justify-self:end;font-size:13.5px;}
 
     <div class="sub-head">Research Assistants</div>
     <p class="placeholder">Coming soon.</p>
+
+    <div class="sub-head">Undergraduates</div>
+    <div class="ugrid">
+      <div class="ucard">
+        <h3>Wentao Yin <span class="cn">殷文韬</span></h3>
+        <p class="uinfo">Southern University of Science and Technology, Sep 2023 – Jul 2027<br><strong>Interests:</strong> Embodied Intelligence</p>
+        <p class="uinfo"><strong>Contact:</strong> <a href="mailto:12312901@mail.sustech.edu.cn">12312901@mail.sustech.edu.cn</a></p>
+      </div>
+      <div class="ucard">
+        <h3>Qingwei Zeng <span class="cn">曾庆伟</span></h3>
+        <p class="uinfo">Southern University of Science and Technology, Sep 2023 – Jul 2027<br><strong>Interests:</strong> Autonomous Driving</p>
+        <p class="uinfo"><strong>Contact:</strong> <a href="mailto:12310323@mail.sustech.edu.cn">12310323@mail.sustech.edu.cn</a></p>
+      </div>
+      <div class="ucard">
+        <h3>Ruixin Sun <span class="cn">孙睿欣</span></h3>
+        <p class="uinfo">Southern University of Science and Technology, Sep 2023 – Jul 2027<br><strong>Interests:</strong> Vision-Language-Navigation</p>
+        <p class="uinfo"><strong>Contact:</strong> <a href="mailto:sunrx205@qq.com">sunrx205@qq.com</a></p>
+      </div>
+      <div class="ucard">
+        <h3>Sicheng Liu <span class="cn">刘思诚</span></h3>
+        <p class="uinfo">Southern University of Science and Technology, Sep 2025 – Jul 2029<br><strong>Interests:</strong> Embodied Intelligence</p>
+        <p class="uinfo"><strong>Contact:</strong> <a href="mailto:12511232@mail.sustech.edu.cn">12511232@mail.sustech.edu.cn</a></p>
+      </div>
+      <div class="ucard">
+        <h3>Yanchi Chen <span class="cn">陈彦驰</span></h3>
+        <p class="uinfo">Southern University of Science and Technology, Sep 2025 – Jul 2029<br><strong>Interests:</strong> Embodied Intelligence</p>
+        <p class="uinfo"><strong>Contact:</strong> <a href="mailto:12512118@mail.sustech.edu.cn">12512118@mail.sustech.edu.cn</a></p>
+      </div>
+    </div>
 
     <div class="sub-head">Alumni</div>
     <p class="placeholder">Coming soon.</p>
