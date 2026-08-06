@@ -144,6 +144,21 @@ section{padding:88px 0;}
 @media (max-width:768px){.ugrid{grid-template-columns:repeat(2,1fr);}}
 @media (max-width:520px){.ugrid{grid-template-columns:1fr;}}
 
+/* research assistant grid — with photo, 2 per row */
+.ragrid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
+.racard{background:var(--card);border-radius:12px;padding:22px 20px;
+  box-shadow:var(--shadow-sm);border:1px solid var(--line);
+  border-left:3px solid var(--primary);transition:transform .2s;
+  display:flex;gap:16px;align-items:flex-start;}
+.racard:hover{transform:translateY(-4px);box-shadow:var(--shadow);}
+.racard img.raphoto{width:165px;height:165px;object-fit:cover;object-position:top;border-radius:8px;
+  border:2px solid var(--primary-light);flex-shrink:0;}
+.racard h3{margin:0 0 4px;font-size:17px;color:var(--ink);}
+.racard h3 .cn{font-size:14px;color:var(--muted);font-weight:600;margin-left:6px;}
+.racard .rainfo{color:var(--muted);font-size:13.5px;line-height:1.5;margin:0;}
+.racard .rainfo strong{color:var(--ink);}
+@media (max-width:768px){.ragrid{grid-template-columns:1fr;}}
+
 /* ---------- Publications ---------- */
 .pub-list{max-width:1120px;}
 
@@ -416,7 +431,20 @@ footer .copy{grid-column:3;justify-self:end;font-size:13.5px;}
     <p class="placeholder">Coming soon.</p>
 
     <div class="sub-head">Research Assistants</div>
-    <p class="placeholder">Coming soon.</p>
+    <div class="ragrid">
+      <div class="racard">
+        <img class="raphoto" src="assets/Shuo Yang.png" alt="Shuo Yang" />
+        <div>
+          <h3>Shuo Yang <span class="cn">杨朔</span></h3>
+          <p class="rainfo">
+            <strong>MSc</strong>, The University of Hong Kong, Sep 2025 – Nov 2026<br>
+            <strong>B.Eng.</strong>, Dalian University of Technology, Sep 2021 – Jun 2025
+          </p>
+          <p class="rainfo"><strong>Research:</strong> Computer Vision, Embodied Intelligence</p>
+          <p class="rainfo"><strong>Contact:</strong> <a href="mailto:northtzzz@163.com">northtzzz@163.com</a></p>
+        </div>
+      </div>
+    </div>
 
     <div class="sub-head">Undergraduates</div>
     <div class="ugrid">
@@ -436,13 +464,28 @@ footer .copy{grid-column:3;justify-self:end;font-size:13.5px;}
         <p class="uinfo"><strong>Contact:</strong> <a href="mailto:12313411@mail.sustech.edu.cn">12313411@mail.sustech.edu.cn</a></p>
       </div>
       <div class="ucard">
+        <h3>Hongyi Liao <span class="cn">廖鸿毅</span></h3>
+        <p class="uinfo">Southern University of Science and Technology, Sep 2023 – Jul 2027<br><strong>Interests:</strong> Physics×AI</p>
+        <p class="uinfo"><strong>Contact:</strong> <a href="mailto:12313109@mail.sustech.edu.cn">12313109@mail.sustech.edu.cn</a></p>
+      </div>
+      <div class="ucard">
         <h3>Zicheng Ding <span class="cn">丁子乘</span></h3>
         <p class="uinfo">Southern University of Science and Technology, Sep 2024 – Jul 2028<br><strong>Interests:</strong> Embodied Intelligence</p>
         <p class="uinfo"><strong>Contact:</strong> <a href="mailto:12410607@mail.sustech.edu.cn">12410607@mail.sustech.edu.cn</a></p>
       </div>
       <div class="ucard">
+        <h3>Yixiao Zhang <span class="cn">张益潇</span></h3>
+        <p class="uinfo">Southern University of Science and Technology, Sep 2024 – Jul 2028<br><strong>Interests:</strong> Embodied Intelligence</p>
+        <p class="uinfo"><strong>Contact:</strong> <a href="mailto:12410327@mail.sustech.edu.cn">12410327@mail.sustech.edu.cn</a></p>
+      </div>
+      <div class="ucard">
+        <h3>Wenxi Xu <span class="cn">徐文熙</span></h3>
+        <p class="uinfo">Southern University of Science and Technology, Sep 2024 – Jul 2028<br><strong>Interests:</strong> World Model & VLA</p>
+        <p class="uinfo"><strong>Contact:</strong> <a href="mailto:12411711@mail.sustech.edu.cn">12411711@mail.sustech.edu.cn</a></p>
+      </div>
+      <div class="ucard">
         <h3>Sicheng Liu <span class="cn">刘思诚</span></h3>
-        <p class="uinfo">Southern University of Science and Technology, Sep 2025 – Jul 2029<br><strong>Interests:</strong> Embodied Intelligence</p>
+        <p class="uinfo">Southern University of Science and Technology, Sep 2025 – Jul 2029<br><strong>Interests:</strong> LLM Agents</p>
         <p class="uinfo"><strong>Contact:</strong> <a href="mailto:12511232@mail.sustech.edu.cn">12511232@mail.sustech.edu.cn</a></p>
       </div>
       <div class="ucard">
@@ -454,6 +497,16 @@ footer .copy{grid-column:3;justify-self:end;font-size:13.5px;}
         <h3>Kejing Hu <span class="cn">胡可菁</span></h3>
         <p class="uinfo">Southern University of Science and Technology, Sep 2025 – Jul 2029<br><strong>Interests:</strong> Embodied Intelligence</p>
         <p class="uinfo"><strong>Contact:</strong> <a href="mailto:12510246@mail.sustech.edu.cn">12510246@mail.sustech.edu.cn</a></p>
+      </div>
+      <div class="ucard">
+        <h3>Yubo Hao <span class="cn">郝禹博</span></h3>
+        <p class="uinfo">Southern University of Science and Technology, Sep 2025 – Jul 2029<br><strong>Interests:</strong> Embodied Intelligence</p>
+        <p class="uinfo"><strong>Contact:</strong> <a href="mailto:12510810@mail.sustech.edu.cn">12510810@mail.sustech.edu.cn</a></p>
+      </div>
+      <div class="ucard">
+        <h3>Youyou Li <span class="cn">李悠游</span></h3>
+        <p class="uinfo">Southern University of Science and Technology, Sep 2025 – Jul 2029<br><strong>Interests:</strong> Autonomous Driving</p>
+        <p class="uinfo"><strong>Contact:</strong> <a href="mailto:12512845@mail.sustech.edu.cn">12512845@mail.sustech.edu.cn</a></p>
       </div>
       <div class="ucard">
         <h3>Rui Sun <span class="cn">孙睿</span></h3>
@@ -474,10 +527,53 @@ footer .copy{grid-column:3;justify-self:end;font-size:13.5px;}
       <h2>Selected Publications</h2>
       <div class="title-line"></div>
     </div>
+    <p class="pub-venue" style="margin-bottom:20px;color:var(--muted);font-size:14px;"><sup>*</sup> Corresponding Author &nbsp;&nbsp; <sup>†</sup> Project Lead</p>
     <div class="pub-list">
 
       <h3 class="pub-year">2026</h3>
       <div class="pub-year-group">
+
+        <article class="pub-item">
+          <h4>From Likelihood to Utility: Quality-Axis Diffusion for End-to-End Autonomous Driving</h4>
+          <p class="pub-authors">J. Yang, Z. Shi, S. Shen, Y. Li, Y. Huang, Z. Kuang, H. Wang, H. Liao, Z. Li, X. Zheng, <strong>H. Lu</strong><sup>*</sup>, H. Yang</p>
+          <p class="pub-venue"><strong>AAAI 2027</strong>, Under Review</p>
+        </article>
+
+        <article class="pub-item">
+          <h4>When RAG Needs Structure? Enhancing Evidence Retrieval via Selective Structural Calibration</h4>
+          <p class="pub-authors">Z. Shi, J. Yang, C. Wang, X. Zheng, <strong>H. Lu</strong><sup>*</sup>, H. Yang</p>
+          <p class="pub-venue"><strong>AAAI 2027</strong>, Under Review</p>
+        </article>
+
+        <article class="pub-item">
+          <h4>Grounding Worlds in Actions: Action-Grounded Dynamics Learning for Robot Video World Models</h4>
+          <p class="pub-authors">Y. Li, Y. Huang, Y. Wang, J. Yang, Z. Shi, Y. Sheng, W. Xu, X. Zhou, <strong>H. Lu</strong><sup>*</sup>, X. Zheng</p>
+          <p class="pub-venue"><strong>AAAI 2027</strong>, Under Review</p>
+        </article>
+
+        <article class="pub-item">
+          <h4>Commit While Futures Agree: Consequence-Aware Adaptive Action Chunking for Robot Manipulation</h4>
+          <p class="pub-authors">Y. Li, Y. Wang, Y. Huang, J. Yang, Y. Sheng, Z. Shi, W. Xu, X. Zhou, H. Li, <strong>H. Lu</strong><sup>*</sup>, X. Zheng</p>
+          <p class="pub-venue"><strong>AAAI 2027</strong>, Under Review</p>
+        </article>
+
+        <article class="pub-item">
+          <h4>Co-World: Collaborative Occupancy World Modeling with Prior Evidence for Future Prediction</h4>
+          <p class="pub-authors">Y. Chen, Z. Kuang, J. Gao, G. Zhao, Y. Cai, Y. Ji, X. Qiu, <strong>H. Lu</strong>, B. Liu, X. Zheng</p>
+          <p class="pub-venue"><strong>AAAI 2027</strong>, Under Review</p>
+        </article>
+
+        <article class="pub-item">
+          <h4>LIRA: Local Cross-Layer Information Routing for Vision-Language-Action Decoding</h4>
+          <p class="pub-authors">Z. Zhang, P. Wang, G. Qiao, Y. Weng, J. Hu, G. Li, L. Wang, J. Wang, T. Gu, <strong>H. Lu</strong><sup>†</sup>, G. Liu, H. Jia, X. Zheng</p>
+          <p class="pub-venue"><strong>AAAI 2027</strong>, Under Review</p>
+        </article>
+
+        <article class="pub-item">
+          <h4>AsyCo: Harnessing Asymmetrically Decaying Information for Cooperative Motion Forecasting in V2X Autonomous Driving</h4>
+          <p class="pub-authors">Y. Xie, H. Liao, Y. Li, J. Zhang, S. Gao, Q. Xu, S. Lai, <strong>H. Lu</strong>, Y. Liu, Z. Cui, W. Ma, Z. Li</p>
+          <p class="pub-venue"><strong>AAAI 2027</strong>, Under Review</p>
+        </article>
 
         <article class="pub-item">
           <h4>Human-inspired Data-light Cultural Alignment for Cross-regional Deployment of Autonomous Vehicles</h4>
