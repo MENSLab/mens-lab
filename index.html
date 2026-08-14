@@ -102,12 +102,12 @@ section{padding:88px 0;}
 
 /* ---------- Directions ---------- */
 .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
-.rcard{position:relative;background:var(--card);border-radius:var(--radius);padding:94px 24px 28px;box-shadow:var(--shadow-sm);
+.rcard{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  background:var(--card);border-radius:var(--radius);padding:34px 20px 30px;box-shadow:var(--shadow-sm);
   border:1px solid var(--line);transition:transform .2s,box-shadow .2s;}
 .rcard:hover{transform:translateY(-6px);box-shadow:var(--shadow);}
-.rcard-icon{position:absolute;top:18px;left:18px;width:68px;height:68px;object-fit:contain;z-index:1;}
-.rcard h3{margin:0 0 10px;font-size:19px;color:var(--ink);}
-.rcard p{margin:0;color:var(--muted);font-size:14.5px;}
+.rcard-icon{width:88px;height:88px;object-fit:contain;margin-bottom:16px;}
+.rcard h3{margin:0;font-size:19px;color:var(--ink);}
 
 /* ---------- People ---------- */
 .director{display:grid;grid-template-columns:240px 1fr;gap:36px;align-items:start;
@@ -158,6 +158,46 @@ section{padding:88px 0;}
 .racard .rainfo{color:var(--muted);font-size:13.5px;line-height:1.5;margin:0;}
 .racard .rainfo strong{color:var(--ink);}
 @media (max-width:768px){.ragrid{grid-template-columns:1fr;}}
+
+/* ---------- News ---------- */
+.news-list{max-width:1120px;}
+
+.news-year-group{
+  background:var(--card);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow-sm);
+  border:1px solid var(--line);
+  padding:16px 32px 28px;
+  margin-bottom:28px;
+}
+
+.news-year{
+  margin:0 0 18px;
+  font-size:22px;
+  line-height:1;
+  font-weight:900;
+  color:#1f5eea;
+  letter-spacing:.5px;
+}
+
+.news-item{
+  background:none;
+  border-left:none;
+  padding:0 0 16px;
+  margin:0 0 16px;
+  box-shadow:none;
+  border-bottom:1px solid var(--line);
+  display:flex;gap:14px;align-items:flex-start;
+}
+.news-item:last-child{
+  border-bottom:none;
+  padding-bottom:0;
+  margin-bottom:0;
+}
+.news-item .news-date{flex-shrink:0;font-size:13.5px;color:var(--muted);font-weight:600;padding-top:3px;white-space:nowrap;}
+.news-item p{margin:0;font-size:15px;line-height:1.55;color:#3f5065;}
+.news-item p a{color:var(--primary);font-weight:600;text-decoration:none;}
+.news-item p a:hover{text-decoration:underline;}
 
 /* ---------- Publications ---------- */
 .pub-list{max-width:1120px;}
@@ -329,13 +369,12 @@ footer .copy{grid-column:3;justify-self:end;font-size:13.5px;}
     <div class="section-head">
       <h2>Directions</h2>
       <div class="title-line"></div>
-      <p class="lead">Our research is organized around four core directions.</p>
     </div>
     <div class="grid-4">
-      <div class="rcard"><img class="rcard-icon" src="assets/eb.png" alt="Embodied Manipulation"><h3>Embodied Manipulation</h3><p>Building agents that perceive and act in the physical world, bridging sensing, manipulation, and reasoning.</p></div>
-      <div class="rcard"><img class="rcard-icon" src="assets/wm.png" alt="World Model"><h3>World Model</h3><p>Learning predictive models of the environment to enable planning, simulation, and robust sim-to-real transfer.</p></div>
-      <div class="rcard"><img class="rcard-icon" src="assets/ad.png" alt="Autonomous Driving"><h3>Autonomous Driving</h3><p>Perception, decision-making, and control for safe, adaptive self-driving systems in complex scenes.</p></div>
-      <div class="rcard"><img class="rcard-icon" src="assets/agent.png" alt="LLM Agent"><h3>LLM Agent</h3><p>Large language models as reasoning agents that plan, use tools, and interact with the physical world.</p></div>
+      <div class="rcard"><img class="rcard-icon" src="assets/eb.png" alt="Embodied Manipulation"><h3>Embodied Manipulation</h3></div>
+      <div class="rcard"><img class="rcard-icon" src="assets/agent.png" alt="LLM Agent"><h3>LLM Agent</h3></div>
+      <div class="rcard"><img class="rcard-icon" src="assets/wm.png" alt="World Model"><h3>World Model</h3></div>
+      <div class="rcard"><img class="rcard-icon" src="assets/ad.png" alt="Autonomous Driving"><h3>Autonomous Driving</h3></div>
     </div>
   </div>
 </section>
@@ -347,7 +386,15 @@ footer .copy{grid-column:3;justify-self:end;font-size:13.5px;}
       <h2>News</h2>
       <div class="title-line"></div>
     </div>
-    <p class="placeholder">Content coming soon.</p>
+    <div class="news-list">
+      <h3 class="news-year">2026</h3>
+      <div class="news-year-group">
+        <div class="news-item">
+          <span class="news-date">Aug 14</span>
+          <p>🎉🎉🎉 Our paper <em>&ldquo;Reframing Urban Transportation As Complex Systems: A Three-Dimensional Evolutionary Perspective&rdquo;</em> has been formally accepted by <strong>Engineering</strong>.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -442,6 +489,30 @@ footer .copy{grid-column:3;justify-self:end;font-size:13.5px;}
           </p>
           <p class="rainfo"><strong>Research:</strong> Computer Vision, Embodied Intelligence</p>
           <p class="rainfo"><strong>Contact:</strong> <a href="mailto:northtzzz@163.com">northtzzz@163.com</a></p>
+        </div>
+      </div>
+      <div class="racard">
+        <img class="raphoto" src="assets/Jia-Huang.jpg" alt="Jia Huang" style="object-position:center;" />
+        <div>
+          <h3>Jia Huang <span class="cn">黄驾</span></h3>
+          <p class="rainfo">
+            <strong>M.S.</strong>, Columbia University, Jul 2025 – Oct 2026<br>
+            <strong>B.Sc.</strong>, Xi'an Jiaotong-Liverpool University &amp; University of Liverpool, Sep 2021 – Jul 2025
+          </p>
+          <p class="rainfo"><strong>Research:</strong> Video Generation and Editing, Multimodal Learning, World Models</p>
+          <p class="rainfo"><strong>Contact:</strong> <a href="mailto:jh5117@columbia.edu">jh5117@columbia.edu</a></p>
+        </div>
+      </div>
+      <div class="racard">
+        <img class="raphoto" src="assets/zhangjianghangfan.jpg" alt="Jianghangfan Zhang" style="object-position:center;" />
+        <div>
+          <h3>Jianghangfan Zhang <span class="cn">张蒋航帆</span></h3>
+          <p class="rainfo">
+            <strong>MSc</strong>, National University of Singapore, Sep 2023 – Jan 2025<br>
+            <strong>B.Eng.</strong>, Huazhong University of Science and Technology, Sep 2019 – Jun 2023
+          </p>
+          <p class="rainfo"><strong>Research:</strong> Embodied Intelligence, World Models</p>
+          <p class="rainfo"><strong>Contact:</strong> <a href="mailto:zhangjhf25@gmail.com">zhangjhf25@gmail.com</a></p>
         </div>
       </div>
     </div>
@@ -566,7 +637,7 @@ footer .copy{grid-column:3;justify-self:end;font-size:13.5px;}
         <article class="pub-item">
           <h4>LIRA: Local Cross-Layer Information Routing for Vision-Language-Action Decoding</h4>
           <p class="pub-authors">Z. Zhang, P. Wang, G. Qiao, Y. Weng, J. Hu, G. Li, L. Wang, J. Wang, T. Gu, <strong>H. Lu</strong><sup>†</sup>, G. Liu, H. Jia, X. Zheng</p>
-          <p class="pub-venue"><strong>AAAI 2027</strong>, Under Review</p>
+          <p class="pub-venue"><strong>AAAI 2027</strong>, Under Review <a class="pub-link" href="https://arxiv.org/abs/2608.07596" target="_blank" rel="noopener">Paper</a></p>
         </article>
 
         <article class="pub-item">
