@@ -94,11 +94,12 @@ section{padding:88px 0;}
 @keyframes bob{50%{transform:translate(-50%,8px);}}
 
 /* ---------- About ---------- */
-.about-body{display:grid;grid-template-columns:1fr 320px;gap:40px;align-items:center;}
+.about-body{display:grid;grid-template-columns:1fr 500px;gap:40px;align-items:center;}
 .about-figure{margin:0;}
 .about-figure img{width:100%;height:auto;display:block;}
-.about-text{max-width:none;}
-.about-text p{color:var(--muted);margin:0 0 16px;font-size:16.5px;}
+.about-text{max-width:none;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:28px 32px;}
+.about-text p{color:var(--muted);margin:0 0 16px;font-size:16.5px;text-align:justify;}
+.about-text strong{color:var(--primary);}
 
 /* ---------- Directions ---------- */
 .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
@@ -110,14 +111,14 @@ section{padding:88px 0;}
 .rcard h3{margin:0;font-size:19px;color:var(--ink);}
 
 /* ---------- People ---------- */
-.director{display:grid;grid-template-columns:240px 1fr;gap:36px;align-items:start;
+.director{display:grid;grid-template-columns:220px 1fr;gap:36px;align-items:start;
   background:var(--card);border-radius:var(--radius);padding:34px;box-shadow:var(--shadow);}
-.director .photo{width:240px;height:331px;object-fit:cover;
+.director .photo{width:220px;height:303px;object-fit:cover;
   border:5px solid var(--primary-light);box-shadow:var(--shadow-sm);background:#dfe7f2;}
 .director:not(.student) .photo{transform:translateY(14px);}
 .director h3{margin:0 0 6px;font-size:26px;}
 .director h3 .cn{font-size:16px;color:var(--muted);font-weight:600;margin-left:8px;letter-spacing:0;}
-.director .bio{color:var(--muted);margin:0 0 18px;font-size:15.5px;}
+.director .bio{color:var(--muted);margin:0 0 18px;font-size:15.5px;text-align:justify;}
 .director .bio strong{color:var(--ink);}
 .scholar-link{margin-left:18px;color:var(--primary);font-weight:700;}
 .scholar-link:hover{color:var(--primary-dark);}
@@ -260,10 +261,13 @@ section{padding:88px 0;}
   background:#e8f1ff;color:var(--primary);border-radius:999px;text-decoration:none;
   transition:background .2s,color .2s;}
 .pub-link:hover{background:var(--primary);color:#fff;}
+.pub-venue strong.pub-award{color:#b30000;}
 
 /* ---------- Opportunities ---------- */
+#opportunities .about-body{grid-template-columns:1fr 260px;gap:24px;}
+#opportunities .about-figure img{width:100%;height:auto;}
 .opportunities-text{max-width:880px;color:var(--muted);font-size:16.5px;}
-.opportunities-text p{margin:0 0 16px;}
+.opportunities-text p{margin:0 0 16px;text-align:justify;}
 .opportunities-text p:last-child{margin-bottom:0;font-weight:700;color:var(--ink);}
 
 /* ---------- Footer ---------- */
@@ -318,8 +322,8 @@ footer .copy{grid-column:3;justify-self:end;font-size:13.5px;}
       <li><a href="#news">News</a></li>
       <li><a href="#people">People</a></li>
       <li><a href="#publications">Publications</a></li>
-      <li><a href="#partners">Partners</a></li>
-      <li><a href="#gallery">Gallery</a></li>
+      <li style="display:none;"><a href="#partners">Partners</a></li>
+      <li style="display:none;"><a href="#gallery">Gallery</a></li>
       <li><a href="#opportunities">Opportunities</a></li>
     </ul>
   </div>
@@ -352,12 +356,10 @@ footer .copy{grid-column:3;justify-self:end;font-size:13.5px;}
     </div>
     <div class="about-body">
       <div class="about-text">
-        <p>MENS Lab is led by Hongliang Lu, an Assistant Professor (Associate Researcher) and Ph.D. Supervisor at the Southern University of Science and Technology (SUSTech). MENS stands for Mind, Embodiment, NeuroAI, and Self-evolution, reflecting our vision of intelligence as something that emerges through perception, physical interaction, memory, adaptation, and continuous growth.</p>
-        <p>The lab explores embodied intelligence, robotic manipulation, autonomous driving, world models, brain-inspired AI, and LLM agents, with the goal of building intelligent systems that do not merely compute, but sense the world, understand action, learn from experience, and evolve within complex real-world environments.</p>
-        <p>We warmly welcome motivated students and researchers to join us in exploring the future of embodied intelligence.</p>
+        <p>MENS Lab is led by Hongliang Lu, an Assistant Professor (Associate Researcher) and Ph.D. Supervisor at the Southern University of Science and Technology (SUSTech). MENS stands for Mind, Embodiment, NeuroAI, and Self-evolution, reflecting our vision of intelligence as something that emerges through perception, physical interaction, memory, adaptation, and continuous growth. The lab explores <strong>Embodied Manipulation</strong>, <strong>LLM Agent</strong>, <strong>World Model</strong>, and <strong>Autonomous Driving</strong>, with the goal of building intelligent systems that do not merely compute, but sense the world, understand action, learn from experience, and evolve within complex real-world environments.</p>
       </div>
       <div class="about-figure">
-        <img src="assets/aboutus.png" alt="MENS Lab">
+        <img src="assets/sustech.jpg" alt="MENS Lab">
       </div>
     </div>
   </div>
@@ -391,7 +393,11 @@ footer .copy{grid-column:3;justify-self:end;font-size:13.5px;}
       <div class="news-year-group">
         <div class="news-item">
           <span class="news-date">Aug 14</span>
-          <p>🎉🎉🎉 Our paper <em>&ldquo;Reframing Urban Transportation As Complex Systems: A Three-Dimensional Evolutionary Perspective&rdquo;</em> has been formally accepted by <strong>Engineering</strong>.</p>
+          <p>🎉🎉🎉 Our paper <em>&ldquo;Reframing Urban Transportation As Complex Systems: A Three-Dimensional Evolutionary Perspective&rdquo;</em> has been Accepted by <strong>Engineering</strong>.</p>
+        </div>
+        <div class="news-item">
+          <span class="news-date">Aug 19</span>
+          <p>🎉🎉🎉 Our paper <em>&ldquo;Energy-Aware Wind-Resilient Routing for Truck-Assisted Multi-UAV Delivery under Wind Uncertainty&rdquo;</em> has won the <strong>Best Student Paper Award</strong> at the <strong>IEEE International Conference on Real-time Computing and Robotics (IEEE RCAR 2026)</strong>.</p>
         </div>
       </div>
     </div>
@@ -408,30 +414,15 @@ footer .copy{grid-column:3;justify-self:end;font-size:13.5px;}
 
     <div class="sub-head">Supervisor</div>
     <div class="director">
-      <img class="photo" src="assets/lu-hongliang-long.jpg" alt="Hongliang Lu" />
+      <img class="photo" src="assets/luhongliang.jpg" alt="Hongliang Lu" />
       <div>
         <h3>Hongliang Lu <span class="cn">鲁洪良</span></h3>
-        <p class="bio">Hongliang Lu is an Assistant Professor (Associate Researcher) and Ph.D. Supervisor in the Department of Mechanical and Energy Engineering at the Southern University of Science and Technology (SUSTech). He received his Ph.D. from the Hong Kong University of Science and Technology, with a research focus on embodied intelligence, autonomous driving, world models, brain-inspired AI, robotic manipulation, and LLM agents. His work explores how intelligent systems can perceive the physical world, reason about complex interactions, make adaptive decisions, and continuously evolve through experience.</p>
-        <p class="bio">As a first author, he has published in leading journals and conferences, including PNAS, Nature Reviews Electrical Engineering, Engineering, Transportation Research Part C, IEEE Transactions on Intelligent Vehicles, and other venues. His long-term research vision is to develop intelligent machines that can understand, act, and grow within real-world environments.</p>
+        <p class="bio">Hongliang Lu is an Assistant Professor (Associate Researcher) and Ph.D. Supervisor in the Department of Mechanical and Energy Engineering at the Southern University of Science and Technology (SUSTech). He received his Ph.D. from the Hong Kong University of Science and Technology, with a research focus on embodied intelligence, autonomous driving, world models, brain-inspired AI, robotic manipulation, and LLM agents. His work explores how intelligent systems can perceive the physical world, reason about complex interactions, make adaptive decisions, and continuously evolve through experience. As a first author, he has published in leading journals and conferences, including PNAS, Nature Reviews Electrical Engineering, Engineering, Transportation Research Part C, IEEE Transactions on Intelligent Vehicles, and other venues. His long-term research vision is to develop intelligent machines that can understand, act, and grow within real-world environments.</p>
         <p class="bio"><strong>Contact:</strong> <a href="mailto:luhl3@sustech.edu.cn">luhl3@sustech.edu.cn</a> <a class="scholar-link" href="https://scholar.google.com/citations?user=tbb1WqQAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener">Google Scholar &#8599;</a></p>
       </div>
     </div>
 
     <div class="sub-head">Ph.D. Students</div>
-
-    <div class="director student">
-      <img class="photo" src="assets/junjie-yang.png" alt="Junjie Yang" />
-      <div>
-        <h3>Junjie Yang <span class="co-sup">(co-supervised)</span> <span class="cn">杨俊杰</span></h3>
-        <p class="bio">
-          <strong>Ph.D. student</strong>, The Hong Kong University of Science and Technology, Sep 2026 -<br>
-          <strong>MPhil</strong>, The Hong Kong University of Science and Technology (Guangzhou), Sep 2024 - July 2026<br>
-          <strong>B.Eng.</strong>, University of Science and Technology Beijing, Sep 2020 - July 2024
-        </p>
-        <p class="bio"><strong>Research:</strong> Autonomous Driving, Embodied Intelligence</p>
-        <p class="bio"><strong>Contact:</strong> <a href="mailto:jyang512@connect.hkust-gz.edu.cn">jyang512@connect.hkust-gz.edu.cn</a></p>
-      </div>
-    </div>
 
     <div class="director student">
       <img class="photo" src="assets/ziyi-shi.jpg" alt="Ziyi Shi" />
@@ -444,6 +435,20 @@ footer .copy{grid-column:3;justify-self:end;font-size:13.5px;}
         </p>
         <p class="bio"><strong>Research:</strong> AI Agents, RAG, LLM Memory</p>
         <p class="bio"><strong>Contact:</strong> <a href="mailto:zshiay@connect.ust.hk">zshiay@connect.ust.hk</a></p>
+      </div>
+    </div>
+
+    <div class="director student">
+      <img class="photo" src="assets/yangjunjie.JPG" alt="Junjie Yang" />
+      <div>
+        <h3>Junjie Yang <span class="co-sup">(co-supervised)</span> <span class="cn">杨俊杰</span></h3>
+        <p class="bio">
+          <strong>Ph.D. student</strong>, The Hong Kong University of Science and Technology, Sep 2026 -<br>
+          <strong>MPhil</strong>, The Hong Kong University of Science and Technology (Guangzhou), Sep 2024 - July 2026<br>
+          <strong>B.Eng.</strong>, University of Science and Technology Beijing, Sep 2020 - July 2024
+        </p>
+        <p class="bio"><strong>Research:</strong> Autonomous Driving, Embodied Intelligence</p>
+        <p class="bio"><strong>Contact:</strong> <a href="mailto:jyang512@connect.ust.hk">jyang512@connect.ust.hk</a></p>
       </div>
     </div>
 
@@ -475,7 +480,6 @@ footer .copy{grid-column:3;justify-self:end;font-size:13.5px;}
     </div>
 
     <div class="sub-head">Master Students</div>
-    <p class="placeholder">Coming soon.</p>
 
     <div class="sub-head">Research Assistants</div>
     <div class="ragrid">
@@ -587,7 +591,6 @@ footer .copy{grid-column:3;justify-self:end;font-size:13.5px;}
     </div>
 
     <div class="sub-head">Alumni</div>
-    <p class="placeholder">Coming soon.</p>
   </div>
 </section>
 
@@ -603,6 +606,18 @@ footer .copy{grid-column:3;justify-self:end;font-size:13.5px;}
 
       <h3 class="pub-year">2026</h3>
       <div class="pub-year-group">
+
+        <article class="pub-item">
+          <h4>Reframing Urban Transportation As Complex Systems: A Three-Dimensional Evolutionary Perspective</h4>
+          <p class="pub-authors"><strong>H. Lu</strong><sup>*</sup>, Z. Shi, H. Zhong, J. Yang, S. Shen, Y. Liang, X. Zheng, C. Lu, Q. Li, M. Xu, W. Liu, J. Ke, S. Feng, Z. Zhu, Y. Zheng, C. Xu, H. Yang</p>
+          <p class="pub-venue"><strong>Engineering</strong>, Accepted <a class="pub-link" href="https://authors.elsevier.com/sd/article/S2095-8099(26)00449-2" target="_blank" rel="noopener">Paper</a></p>
+        </article>
+
+        <article class="pub-item">
+          <h4>Energy-Aware Wind-Resilient Routing for Truck-Assisted Multi-UAV Delivery under Wind Uncertainty</h4>
+          <p class="pub-authors">T. Li, Y. Sheng, <strong>H. Lu</strong><sup>†</sup>, Z. Wang, H. Li, X. Zheng</p>
+          <p class="pub-venue"><strong>IEEE RCAR 2026</strong> <strong class="pub-award">(Best Student Paper Award)</strong>, Accepted <a class="pub-link" href="https://arxiv.org/pdf/2608.11641" target="_blank" rel="noopener">Paper</a></p>
+        </article>
 
         <article class="pub-item">
           <h4>From Likelihood to Utility: Quality-Axis Diffusion for End-to-End Autonomous Driving</h4>
@@ -653,12 +668,6 @@ footer .copy{grid-column:3;justify-self:end;font-size:13.5px;}
         </article>
 
         <article class="pub-item">
-          <h4>Reframing Urban Transportation As Complex Systems: A Three-Dimensional Evolutionary Perspective</h4>
-          <p class="pub-authors"><strong>H. Lu</strong><sup>*</sup>, Z. Shi, H. Zhong, J. Yang, S. Shen, Y. Liang, X. Zheng, C. Lu, Q. Li, M. Xu, W. Liu, J. Ke, S. Feng, Z. Zhu, Y. Zheng, C. Xu, H. Yang</p>
-          <p class="pub-venue"><strong>Engineering</strong>, Accepted in Principle</p>
-        </article>
-
-        <article class="pub-item">
           <h4><a href="https://openreview.net/forum?id=lwxmgd3Pcq" target="_blank" rel="noopener">EvoDrive: Self-Evolving Autonomous Driving via Latent World Model-Guided Post-hoc Reflection</a></h4>
           <p class="pub-authors">J. Yang, Q. Zhang, Y. Li, S. Shen, Y. Huang, Y. Sheng, W. Xu, Z. Shi, T. Li, Y. Chen, Y. Wang, J. Ma, X. Zheng, <strong>H. Lu</strong><sup>*</sup>, H. Yang</p>
           <p class="pub-venue"><strong>NeurIPS 2026</strong>, Under Review</p>
@@ -694,24 +703,22 @@ footer .copy{grid-column:3;justify-self:end;font-size:13.5px;}
 </section>
 
 <!-- ===== PARTNERS ===== -->
-<section id="partners">
+<section id="partners" style="display:none;">
   <div class="container">
     <div class="section-head">
       <h2>Partners</h2>
       <div class="title-line"></div>
     </div>
-    <p class="placeholder">Content coming soon.</p>
   </div>
 </section>
 
 <!-- ===== GALLERY ===== -->
-<section id="gallery">
+<section id="gallery" style="display:none;">
   <div class="container">
     <div class="section-head">
       <h2>Gallery</h2>
       <div class="title-line"></div>
     </div>
-    <p class="placeholder">Content coming soon.</p>
   </div>
 </section>
 
@@ -722,10 +729,15 @@ footer .copy{grid-column:3;justify-self:end;font-size:13.5px;}
       <h2>Opportunities</h2>
       <div class="title-line"></div>
     </div>
-    <div class="opportunities-text">
-      <p>We are recruiting <strong>Master&rsquo;s and Ph.D. students</strong> for the 2027 cohort. We welcome highly motivated applicants interested in embodied AI, robot learning, world models, and LLM agents. Applicants with relevant research experience will be given priority consideration.</p>
-      <p>We are also continuously recruiting <strong>Research Assistants</strong>. Outstanding Research Assistants may receive priority recommendation for future Ph.D. applications.</p>
-      <p>Join MENS Lab and work with us on meaningful, exciting, and impactful research.</p>
+    <div class="about-body">
+      <div class="opportunities-text">
+        <p>We are recruiting <strong>Master&rsquo;s and Ph.D. students</strong> for the 2027 cohort. We welcome highly motivated applicants interested in embodied AI, robot learning, world models, and LLM agents. Applicants with relevant research experience will be given priority consideration.</p>
+        <p>We are also continuously recruiting <strong>Research Assistants</strong>. Outstanding Research Assistants may receive priority recommendation for future Ph.D. applications.</p>
+        <p>Join MENS Lab and work with us on meaningful, exciting, and impactful research.</p>
+      </div>
+      <div class="about-figure">
+        <img src="assets/aboutus.png" alt="MENS Lab">
+      </div>
     </div>
   </div>
 </section>
