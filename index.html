@@ -70,14 +70,23 @@ section{padding:88px 0;}
 .hero{
   position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;
   text-align:center;color:#fff;overflow:hidden;
+  background:transparent;
+}
+/* hero backdrop: BG.jpg fades out at the bottom so it dissolves into the page background (BG2) */
+.hero::before{
+  content:"";position:absolute;inset:0;z-index:0;
   background:
-    linear-gradient(180deg,rgba(6,18,38,.62) 0%,rgba(6,18,38,.42) 40%,rgba(6,18,38,.82) 100%),
+    linear-gradient(180deg,rgba(6,18,38,.62) 0%,rgba(6,18,38,.42) 40%,rgba(6,18,38,.74) 100%),
     url("assets/BG.jpg") center/cover no-repeat;
+  -webkit-mask-image:linear-gradient(to bottom,#000 75%,rgba(0,0,0,.5) 88%,rgba(0,0,0,0) 100%);
+  mask-image:linear-gradient(to bottom,#000 75%,rgba(0,0,0,.5) 88%,rgba(0,0,0,0) 100%);
 }
 .hero::after{
   content:"";position:absolute;inset:0;
   background-image:radial-gradient(rgba(255,255,255,.08) 1px,transparent 1px);
   background-size:26px 26px;opacity:.5;pointer-events:none;
+  -webkit-mask-image:linear-gradient(to bottom,#000 83%,rgba(0,0,0,0) 100%);
+  mask-image:linear-gradient(to bottom,#000 83%,rgba(0,0,0,0) 100%);
 }
 .hero .container{position:relative;z-index:2;}
 .hero h1{font-family:"Archivo",-apple-system,"Segoe UI","PingFang SC","Hiragino Sans GB",sans-serif;
@@ -257,6 +266,26 @@ section{padding:88px 0;}
   text-shadow:0 2px 12px rgba(0,0,0,.5);
 }
 
+.pub-subhead{
+  margin:32px 0 16px;
+  font-size:17px;
+  font-weight:900;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--primary);
+  display:flex;align-items:center;gap:13px;
+  text-shadow:0 2px 14px rgba(0,0,0,.55);
+}
+.pub-subhead::before{
+  content:"";width:10px;height:10px;background:var(--primary);border-radius:2px;flex-shrink:0;
+  box-shadow:0 0 12px rgba(224,165,0,.7);
+}
+.pub-subhead::after{
+  content:"";flex:1;height:2px;border-radius:2px;
+  background:linear-gradient(90deg,rgba(224,165,0,.9),rgba(224,165,0,0));
+}
+.pub-subhead:first-child{margin-top:2px;}
+
 .pub-item{
   background:none;
   border-left:none;
@@ -280,6 +309,8 @@ section{padding:88px 0;}
 }
 .pub-item h4 a{color:inherit;}
 .pub-item h4 a:hover{color:var(--primary);}
+.pub-item h4 a.pub-link{color:var(--primary);vertical-align:middle;margin-left:10px;}
+.pub-item h4 a.pub-link:hover{color:#fff;}
 
 .pub-authors,.pub-venue{
   margin:0;
@@ -416,17 +447,17 @@ footer .copy{grid-column:3;justify-self:end;font-size:13.5px;}
     </div>
     <div class="dir-grid">
       <article class="dir">
-        <div class="ph" style="background-image:url('assets/1.jpg')"></div>
+        <div class="ph" style="background-image:url('assets/2.jpg')"></div>
         <span class="tag">01</span>
         <div class="inner">
-          <h3>Embodied Manipulation</h3>
+          <h3>LLM Agent</h3>
         </div>
       </article>
       <article class="dir">
-        <div class="ph" style="background-image:url('assets/2.jpg')"></div>
+        <div class="ph" style="background-image:url('assets/1.jpg')"></div>
         <span class="tag">02</span>
         <div class="inner">
-          <h3>LLM Agent</h3>
+          <h3>Embodied Manipulation</h3>
         </div>
       </article>
       <article class="dir">
@@ -571,6 +602,18 @@ footer .copy{grid-column:3;justify-self:end;font-size:13.5px;}
           <p class="rainfo"><strong>Contact:</strong> <a href="mailto:liangwj2026@mail.sustech.edu.cn">liangwj2026@mail.sustech.edu.cn</a></p>
         </div>
       </div>
+      <div class="racard">
+        <img class="raphoto" src="assets/wentao-yin.jpg" alt="Wentao Yin" style="object-position:center;" />
+        <div>
+          <h3>Wentao Yin <span class="cn">殷文韬</span></h3>
+          <p class="rainfo">
+            <strong>M.Eng.</strong>, Southern University of Science and Technology, Sep 2027 – Jun 2030<br>
+            <strong>B.Eng.</strong>, Southern University of Science and Technology, Sep 2023 – Jun 2027
+          </p>
+          <p class="rainfo"><strong>Research:</strong> Embodied Intelligence, LLM Agents</p>
+          <p class="rainfo"><strong>Contact:</strong> <a href="mailto:12312901@mail.sustech.edu.cn">12312901@mail.sustech.edu.cn</a></p>
+        </div>
+      </div>
     </div>
 
     <div class="sub-head">Research Assistants</div>
@@ -617,11 +660,13 @@ footer .copy{grid-column:3;justify-self:end;font-size:13.5px;}
 
     <div class="sub-head">Undergraduates</div>
     <div class="ugrid">
-      <div class="ucard">
+      <!-- 隐去(已升入硕士,见 Master Students 区块):Wentao Yin 殷文韬
+<div class="ucard">
         <h3>Wentao Yin <span class="cn">殷文韬</span></h3>
-        <p class="uinfo">Southern University of Science and Technology, Sep 2023 – Jul 2027<br><strong>Interests:</strong> Embodied Intelligence</p>
+        <p class="uinfo">Southern University of Science and Technology, Sep 2023 – Jul 2027<br><strong>Interests:</strong> LLM Agents, Long-term Memory</p>
         <p class="uinfo"><strong>Contact:</strong> <a href="mailto:12312901@mail.sustech.edu.cn">12312901@mail.sustech.edu.cn</a></p>
       </div>
+      -->
       <div class="ucard">
         <h3>Qingwei Zeng <span class="cn">曾庆伟</span></h3>
         <p class="uinfo">Southern University of Science and Technology, Sep 2023 – Jul 2027<br><strong>Interests:</strong> Autonomous Driving</p>
@@ -649,7 +694,7 @@ footer .copy{grid-column:3;justify-self:end;font-size:13.5px;}
       </div>
       <div class="ucard">
         <h3>Zicheng Ding <span class="cn">丁子乘</span></h3>
-        <p class="uinfo">Southern University of Science and Technology, Sep 2024 – Jul 2028<br><strong>Interests:</strong> Embodied Intelligence</p>
+        <p class="uinfo">Southern University of Science and Technology, Sep 2024 – Jul 2028<br><strong>Interests:</strong> LLM Agents, Long-term Memory</p>
         <p class="uinfo"><strong>Contact:</strong> <a href="mailto:12410607@mail.sustech.edu.cn">12410607@mail.sustech.edu.cn</a></p>
       </div>
       <div class="ucard">
@@ -659,7 +704,7 @@ footer .copy{grid-column:3;justify-self:end;font-size:13.5px;}
       </div>
       <div class="ucard">
         <h3>Wenxi Xu <span class="cn">徐文熙</span></h3>
-        <p class="uinfo">Southern University of Science and Technology, Sep 2024 – Jul 2028<br><strong>Interests:</strong> World Model & VLA</p>
+        <p class="uinfo">Southern University of Science and Technology, Sep 2024 – Jul 2028<br><strong>Interests:</strong> LLM Agents, Long-term Memory</p>
         <p class="uinfo"><strong>Contact:</strong> <a href="mailto:12411711@mail.sustech.edu.cn">12411711@mail.sustech.edu.cn</a></p>
       </div>
       <div class="ucard">
@@ -679,7 +724,7 @@ footer .copy{grid-column:3;justify-self:end;font-size:13.5px;}
       </div>
       <div class="ucard">
         <h3>Yubo Hao <span class="cn">郝禹博</span></h3>
-        <p class="uinfo">Southern University of Science and Technology, Sep 2025 – Jul 2029<br><strong>Interests:</strong> Embodied Intelligence</p>
+        <p class="uinfo">Southern University of Science and Technology, Sep 2025 – Jul 2029<br><strong>Interests:</strong> LLM Agents, Long-term Memory</p>
         <p class="uinfo"><strong>Contact:</strong> <a href="mailto:12510810@mail.sustech.edu.cn">12510810@mail.sustech.edu.cn</a></p>
       </div>
       <div class="ucard">
@@ -715,99 +760,90 @@ footer .copy{grid-column:3;justify-self:end;font-size:13.5px;}
 
       <h3 class="pub-year">2026</h3>
       <div class="pub-year-group">
-
-        <article class="pub-item">
+        <h4 class="pub-subhead">Accepted</h4><article class="pub-item">
           <h4>Reframing Urban Transportation As Complex Systems: A Three-Dimensional Evolutionary Perspective</h4>
           <p class="pub-authors"><strong>H. Lu</strong><sup>*</sup>, Z. Shi, H. Zhong, J. Yang, S. Shen, Y. Liang, X. Zheng, C. Lu, Q. Li, M. Xu, W. Liu, J. Ke, S. Feng, Z. Zhu, Y. Zheng, C. Xu, H. Yang</p>
-          <p class="pub-venue"><strong>Engineering</strong>, Accepted <a class="pub-link" href="https://authors.elsevier.com/sd/article/S2095-8099(26)00449-2" target="_blank" rel="noopener">Paper</a></p>
+          <p class="pub-venue"><strong>Engineering</strong> <a class="pub-link" href="https://authors.elsevier.com/sd/article/S2095-8099(26)00449-2" target="_blank" rel="noopener">Paper</a></p>
         </article>
 
         <article class="pub-item">
           <h4>Energy-Aware Wind-Resilient Routing for Truck-Assisted Multi-UAV Delivery under Wind Uncertainty</h4>
           <p class="pub-authors">T. Li, Y. Sheng, <strong>H. Lu</strong>, Z. Wang, H. Li, X. Zheng</p>
-          <p class="pub-venue"><strong>IEEE RCAR 2026</strong> <strong class="pub-award">(Best Student Paper Award)</strong>, Accepted <a class="pub-link" href="https://arxiv.org/pdf/2608.11641" target="_blank" rel="noopener">Paper</a></p>
+          <p class="pub-venue"><strong>IEEE RCAR 2026</strong> <strong class="pub-award">(Best Student Paper Award)</strong> <a class="pub-link" href="https://arxiv.org/pdf/2608.11641" target="_blank" rel="noopener">Paper</a></p>
         </article>
 
         <article class="pub-item">
+          <h4>Dual-chirality Flexagon Linkages with Infinite Eversion and Surface Reconfigurability</h4>
+          <p class="pub-authors">J. Lin, Z. Miao, H. Zhang, K. Dong, <strong>H. Lu</strong>, H. Feng, J. S. Dai</p>
+          <p class="pub-venue"><strong>PNAS</strong> <a class="pub-link" href="https://www.pnas.org/doi/full/10.1073/pnas.2603729123" target="_blank" rel="noopener">Paper</a></p>
+        </article>
+
+        <article class="pub-item">
+          <h4>Diffusion-based 4D Trajectory Prediction and Distributed Control for UAV Swarms</h4>
+          <p class="pub-authors">T. Li, <strong>H. Lu</strong>, H. Li, X. Zheng</p>
+          <p class="pub-venue"><strong>IROS 2026</strong> <a class="pub-link" href="https://arxiv.org/pdf/2606.31197" target="_blank" rel="noopener">Paper</a></p>
+        </article>
+        <h4 class="pub-subhead">Under Review</h4>
+        <article class="pub-item">
+          <h4>EditWM: Event-Decomposed World Modeling with Incremental Correction for End-to-End Autonomous Driving <a class="pub-link" href="https://arxiv.org/pdf/2609.22317" target="_blank" rel="noopener">Paper</a></h4>
+          <p class="pub-authors">J. Yang, Q. Zeng, Y. Li, Z. Ding, Z. Shi, S. Shen, <strong>H. Lu</strong><sup>*</sup>, H. Yang</p>
+        </article><article class="pub-item">
           <h4>From Likelihood to Utility: Quality-Axis Diffusion for End-to-End Autonomous Driving</h4>
           <p class="pub-authors">J. Yang, Z. Shi, S. Shen, Y. Li, Y. Huang, Z. Kuang, H. Wang, H. Liao, Z. Li, X. Zheng, <strong>H. Lu</strong><sup>*</sup>, H. Yang</p>
-          <p class="pub-venue"><strong>AAAI 2027</strong>, Under Review</p>
         </article>
 
         <article class="pub-item">
           <h4>When RAG Needs Structure? Enhancing Evidence Retrieval via Selective Structural Calibration</h4>
           <p class="pub-authors">Z. Shi, J. Yang, C. Wang, X. Zheng, <strong>H. Lu</strong><sup>*</sup>, H. Yang</p>
-          <p class="pub-venue"><strong>AAAI 2027</strong>, Under Review</p>
         </article>
 
         <!-- 隐去 2026-09-15(按 PI 要求暂不公开):Grounding Worlds in Actions / Commit While Futures Agree / Co-World
         <article class="pub-item">
           <h4>Grounding Worlds in Actions: Action-Grounded Dynamics Learning for Robot Video World Models</h4>
           <p class="pub-authors">Y. Li, Y. Huang, Y. Wang, J. Yang, Z. Shi, Y. Sheng, W. Xu, X. Zhou, <strong>H. Lu</strong><sup>*</sup>, X. Zheng</p>
-          <p class="pub-venue"><strong>AAAI 2027</strong>, Under Review</p>
         </article>
 
         <article class="pub-item">
           <h4>Commit While Futures Agree: Consequence-Aware Adaptive Action Chunking for Robot Manipulation</h4>
           <p class="pub-authors">Y. Li, Y. Wang, Y. Huang, J. Yang, Y. Sheng, Z. Shi, W. Xu, X. Zhou, H. Li, <strong>H. Lu</strong><sup>*</sup>, X. Zheng</p>
-          <p class="pub-venue"><strong>AAAI 2027</strong>, Under Review</p>
         </article>
 
         <article class="pub-item">
           <h4>Co-World: Collaborative Occupancy World Modeling with Prior Evidence for Future Prediction</h4>
           <p class="pub-authors">Y. Chen, Z. Kuang, J. Gao, G. Zhao, Y. Cai, Y. Ji, X. Qiu, <strong>H. Lu</strong>, B. Liu, X. Zheng</p>
-          <p class="pub-venue"><strong>AAAI 2027</strong>, Under Review</p>
         </article>
         -->
 
         <article class="pub-item">
-          <h4>LIRA: Local Cross-Layer Information Routing for Vision-Language-Action Decoding</h4>
+          <h4>LIRA: Local Cross-Layer Information Routing for Vision-Language-Action Decoding <a class="pub-link" href="https://arxiv.org/abs/2608.07596" target="_blank" rel="noopener">Paper</a></h4>
           <p class="pub-authors">Z. Zhang, P. Wang, G. Qiao, Y. Weng, J. Hu, G. Li, L. Wang, J. Wang, T. Gu, <strong>H. Lu</strong>, G. Liu, H. Jia, X. Zheng</p>
-          <p class="pub-venue"><strong>AAAI 2027</strong>, Under Review <a class="pub-link" href="https://arxiv.org/abs/2608.07596" target="_blank" rel="noopener">Paper</a></p>
         </article>
 
         <!-- 隐去 2026-09-15(按 PI 要求暂不公开):AsyCo
         <article class="pub-item">
           <h4>AsyCo: Harnessing Asymmetrically Decaying Information for Cooperative Motion Forecasting in V2X Autonomous Driving</h4>
           <p class="pub-authors">Y. Xie, H. Liao, Y. Li, J. Zhang, S. Gao, Q. Xu, S. Lai, <strong>H. Lu</strong>, Y. Liu, Z. Cui, W. Ma, Z. Li</p>
-          <p class="pub-venue"><strong>AAAI 2027</strong>, Under Review</p>
         </article>
         -->
 
         <article class="pub-item">
           <h4>Human-inspired Data-light Cultural Alignment for Cross-regional Deployment of Autonomous Vehicles</h4>
           <p class="pub-authors"><strong>H. Lu</strong><sup>*</sup>, J. Yang, S. Shen, Z. Zang, Y. Li, J. Cao, C. Lu, X. Zheng, H. Yang</p>
-          <p class="pub-venue"><strong>Nature Communications</strong>, Under Review</p>
         </article>
 
         <article class="pub-item">
           <h4>EvoDrive: Self-Evolving Autonomous Driving via Latent World Model-Guided Post-hoc Reflection</h4>
           <p class="pub-authors">J. Yang, Q. Zhang, Y. Li, S. Shen, Y. Huang, Y. Sheng, W. Xu, Z. Shi, T. Li, Y. Chen, Y. Wang, J. Ma, X. Zheng, <strong>H. Lu</strong><sup>*</sup>, H. Yang</p>
-          <p class="pub-venue"><strong>NeurIPS 2026</strong>, Under Review</p>
         </article>
 
         <article class="pub-item">
-          <h4>Coordinated Pandemic Control with Large Language Model Agents as Policymaking Assistants</h4>
+          <h4>Coordinated Pandemic Control with Large Language Model Agents as Policymaking Assistants <a class="pub-link" href="https://arxiv.org/pdf/2601.09264" target="_blank" rel="noopener">Paper</a></h4>
           <p class="pub-authors">Z. Shi, X. Guo, <strong>H. Lu</strong><sup>*</sup>, M. Peng, H. Wang, Z. Zhu, Z. Li, Y. Liang, X. Zheng, H. Yang</p>
-          <p class="pub-venue"><strong>iScience</strong>, Under Review <a class="pub-link" href="https://arxiv.org/pdf/2601.09264" target="_blank" rel="noopener">Paper</a></p>
         </article>
 
         <article class="pub-item">
-          <h4>UniT: Unified Geometry Learning with Group Autoregressive Transformer</h4>
+          <h4>UniT: Unified Geometry Learning with Group Autoregressive Transformer <a class="pub-link" href="https://arxiv.org/pdf/2605.21131" target="_blank" rel="noopener">Paper</a></h4>
           <p class="pub-authors">H. Wang, Y. Huang, Z. Kuang, <strong>H. Lu</strong>, X. Zheng, M. Yang, G. Hua</p>
-          <p class="pub-venue"><strong>IEEE TPAMI</strong>, Under Review <a class="pub-link" href="https://arxiv.org/pdf/2605.21131" target="_blank" rel="noopener">Paper</a></p>
-        </article>
-
-        <article class="pub-item">
-          <h4>Dual-chirality Flexagon Linkages with Infinite Eversion and Surface Reconfigurability</h4>
-          <p class="pub-authors">J. Lin, Z. Miao, H. Zhang, K. Dong, <strong>H. Lu</strong>, H. Feng, J. S. Dai</p>
-          <p class="pub-venue"><strong>PNAS</strong>, Accepted <a class="pub-link" href="https://www.pnas.org/doi/full/10.1073/pnas.2603729123" target="_blank" rel="noopener">Paper</a></p>
-        </article>
-
-        <article class="pub-item">
-          <h4>Diffusion-based 4D Trajectory Prediction and Distributed Control for UAV Swarms</h4>
-          <p class="pub-authors">T. Li, <strong>H. Lu</strong>, H. Li, X. Zheng</p>
-          <p class="pub-venue"><strong>IROS 2026</strong>, Accepted <a class="pub-link" href="https://arxiv.org/pdf/2606.31197" target="_blank" rel="noopener">Paper</a></p>
         </article>
       </div>
 
