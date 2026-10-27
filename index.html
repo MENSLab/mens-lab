@@ -25,9 +25,11 @@
   --radius:14px;
   --shadow:0 12px 34px rgba(0,0,0,.45);
   --shadow-sm:0 5px 16px rgba(0,0,0,.32);
+  --topnav:66px;
+  --foot:0px;   /* no footer bar; refined at runtime by the paged router (JS) */
 }
 *{box-sizing:border-box;}
-html{scroll-behavior:smooth;}
+html{scroll-behavior:auto;}
 body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
@@ -40,7 +42,7 @@ body{
 }
 a{color:inherit;text-decoration:none;}
 /* card glass blur */
-.about-text,.director,.news-year-group,.pub-year-group,.ucard,.racard{
+.director,.news-year-group,.pub-year-group,.ucard,.racard{
   -webkit-backdrop-filter:blur(14px) saturate(140%);
   backdrop-filter:blur(14px) saturate(140%);
 }
@@ -90,7 +92,7 @@ section{padding:88px 0;}
 }
 .hero .container{position:relative;z-index:2;}
 .hero h1{font-family:"Archivo",-apple-system,"Segoe UI","PingFang SC","Hiragino Sans GB",sans-serif;
-  font-size:clamp(56px,11vw,150px);margin:0;font-weight:900;text-transform:uppercase;letter-spacing:-.02em;
+  font-size:clamp(54px,min(11vw,15vh),150px);margin:0;font-weight:900;text-transform:uppercase;letter-spacing:-.02em;
   text-shadow:0 8px 40px rgba(0,0,0,.3);}
 .hero h1 .ghost{color:transparent;-webkit-text-stroke:2.5px rgba(255,255,255,.75);text-shadow:none;}
 .hero .sub{font-size:clamp(16px,2.4vw,20px);color:rgba(255,255,255,.82);margin:10px 0 6px;font-weight:500;}
@@ -116,15 +118,34 @@ section{padding:88px 0;}
 .mens-expand .sep{opacity:0;transition:opacity .4s ease;color:rgba(255,215,0,.65);margin:0 10px 0 2px;}
 .mens-expand .sep.show{opacity:1;}
 
-.scroll-ind{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2;
-  color:rgba(255,255,255,.7);font-size:12px;letter-spacing:.2em;animation:bob 1.8s ease-in-out infinite;}
-@keyframes bob{50%{transform:translate(-50%,8px);}}
+.scroll-ind{display:inline-block;margin-top:30px;position:relative;z-index:2;
+  color:rgba(255,255,255,.7);font-size:12px;font-weight:600;letter-spacing:.22em;
+  border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:8px 20px;
+  transition:color .2s,border-color .2s;animation:bob 1.8s ease-in-out infinite;}
+.scroll-ind:hover{color:var(--primary);border-color:rgba(224,165,0,.6);}
+@keyframes bob{50%{transform:translateY(6px);}}
 
 /* ---------- About ---------- */
-.about-body{display:grid;grid-template-columns:1fr 500px;gap:40px;align-items:center;}
+.about-body{display:grid;grid-template-columns:1fr 400px;gap:40px;align-items:center;}
 .about-figure{margin:0;}
 .about-figure img{width:100%;height:auto;display:block;}
-.about-text{max-width:none;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:28px 32px;}
+/* About photo: stays in full colour at rest, zooms + brightens + warms up on hover
+   (same motion as the Directions cards, but WITHOUT their grayscale default — PI: "不要全是灰色的") */
+#about .about-figure{overflow:hidden;border-radius:var(--radius);}
+#about .about-figure img{
+  filter:saturate(1.02) brightness(1.01);
+  transition:transform .6s ease,filter .45s;
+}
+#about .about-figure:hover img{
+  transform:scale(1.07);
+  filter:saturate(1.18) contrast(1.04) brightness(1.1);
+}
+@media (prefers-reduced-motion:reduce){
+  #about .about-figure img{transition:none;}
+  #about .about-figure:hover img{transform:none;}
+}
+/* About text sits directly on the page background — no glass card (PI request, 2026-10-27) */
+.about-text{max-width:none;background:none;border:0;box-shadow:none;padding:0;}
 .about-text p{color:var(--muted);margin:0 0 16px;font-size:16.5px;text-align:justify;}
 .about-text strong{color:var(--primary);}
 
@@ -338,13 +359,29 @@ section{padding:88px 0;}
 .opportunities-text p{margin:0 0 16px;text-align:justify;}
 .opportunities-text p:last-child{margin-bottom:0;font-weight:700;color:#fff;}
 
-/* ---------- Footer ---------- */
-footer{background:rgba(34,38,46,.5);color:rgba(255,255,255,.78);padding:40px 0;margin-top:0;
-  backdrop-filter:blur(18px) saturate(150%);-webkit-backdrop-filter:blur(18px) saturate(150%);
-  border-top:1px solid rgba(255,255,255,.1);}
-footer .footer-inner{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;}
-footer .fbrand{grid-column:2;justify-self:center;color:#fff;font-family:"Archivo",-apple-system,"Segoe UI","PingFang SC","Hiragino Sans GB",sans-serif;font-weight:800;font-size:18px;letter-spacing:.5px;text-transform:uppercase;}
-footer .copy{grid-column:3;justify-self:end;font-size:13.5px;}
+/* ---------- Paged navigation: one section per screen ---------- */
+/* Only the section matched by the URL hash is rendered; the page never scrolls
+   through the other sections, so vertical scrolling no longer reveals the next block. */
+.page{display:none;}
+.page.current{
+  display:block;
+  min-height:calc(100vh - var(--topnav) - var(--foot));
+  animation:pageIn .45s cubic-bezier(.22,.8,.3,1) both;
+}
+.hero.page.current{display:flex;}
+@keyframes pageIn{
+  from{opacity:0;transform:translateY(16px);}
+  to{opacity:1;transform:translateY(0);}
+}
+@media (prefers-reduced-motion:reduce){
+  .page.current{animation:none;}
+  .scroll-ind{animation:none;}
+}
+/* current-page marker in the nav */
+.nav-links a.active::after{
+  content:"";position:absolute;left:0;right:0;bottom:-7px;height:2px;border-radius:2px;
+  background:var(--primary);box-shadow:0 0 10px rgba(224,165,0,.7);
+}
 
 /* ---------- Responsive ---------- */
 @media (max-width:980px){
@@ -376,9 +413,6 @@ footer .copy{grid-column:3;justify-self:end;font-size:13.5px;}
   .pub-year{font-size:20px;}
   .pub-item h4{font-size:15px;}
   .pub-authors,.pub-venue{font-size:13px;}
-  footer .footer-inner{grid-template-columns:1fr;justify-items:center;gap:10px;text-align:center;}
-  footer .fbrand, footer .copy{grid-column:auto;}
-  footer .copy{justify-self:center;}
 }
 </style>
 </head>
@@ -391,7 +425,6 @@ footer .copy{grid-column:3;justify-self:end;font-size:13.5px;}
     <button class="nav-toggle" aria-label="Toggle menu">&#9776;</button>
     <ul class="nav-links">
       <li><a href="#about" class="active">About Us</a></li>
-      <li><a href="#directions">Directions</a></li>
       <li><a href="#news">News</a></li>
       <li><a href="#people">People</a></li>
       <li><a href="#publications">Publications</a></li>
@@ -403,7 +436,7 @@ footer .copy{grid-column:3;justify-self:end;font-size:13.5px;}
 </nav>
 
 <!-- ===== HERO ===== -->
-<header class="hero" id="home">
+<header class="hero page current" id="home">
   <div class="container">
     <h1>MENS <span class="ghost">LAB</span></h1>
     <p class="hero-cn">具身心智与进化智能实验室</p>
@@ -416,12 +449,12 @@ footer .copy{grid-column:3;justify-self:end;font-size:13.5px;}
       <span class="word" data-i="2"><span class="ul">N</span>euroAI</span><span class="sep" data-i="2">,</span>
       <span class="word" data-i="3"><span class="and">and</span> <span class="ul">S</span>elf-evolution</span>
     </p>
+    <a class="scroll-ind" href="#about">EXPLORE &#8594;</a>
   </div>
-  <div class="scroll-ind">SCROLL &#8595;</div>
 </header>
 
 <!-- ===== ABOUT US ===== -->
-<section id="about">
+<section id="about" class="page">
   <div class="container">
     <div class="section-head">
       <h2>About Us</h2>
@@ -429,22 +462,14 @@ footer .copy{grid-column:3;justify-self:end;font-size:13.5px;}
     </div>
     <div class="about-body">
       <div class="about-text">
-        <p>MENS Lab is led by Hongliang Lu, an Assistant Professor (Associate Researcher) and Ph.D. Supervisor at the Southern University of Science and Technology (SUSTech). MENS stands for Mind, Embodiment, NeuroAI, and Self-evolution, reflecting our vision of intelligence as something that emerges through perception, physical interaction, memory, adaptation, and continuous growth. The lab explores <strong>Embodied Manipulation</strong>, <strong>LLM Agent</strong>, <strong>World Model</strong>, and <strong>Autonomous Driving</strong>, with the goal of building intelligent systems that do not merely compute, but sense the world, understand action, learn from experience, and evolve within complex real-world environments.</p>
+        <p>MENS Lab is led by Hongliang Lu, an Assistant Professor (Associate Researcher) and Ph.D. Supervisor at the Southern University of Science and Technology (SUSTech). MENS stands for Mind, Embodiment, NeuroAI, and Self-evolution, reflecting our vision of intelligence as something that emerges through perception, physical interaction, memory, adaptation, and continuous growth. The lab explores <strong>LLM Agent</strong>, <strong>Embodied Manipulation</strong>, <strong>World Model</strong>, and <strong>Autonomous Driving</strong>, with the goal of building intelligent systems that do not merely compute, but sense the world, understand action, learn from experience, and evolve within complex real-world environments.</p>
       </div>
       <div class="about-figure">
         <img src="assets/sustech.jpg" alt="MENS Lab">
       </div>
     </div>
-  </div>
-</section>
 
-<!-- ===== DIRECTIONS ===== -->
-<section id="directions">
-  <div class="container">
-    <div class="section-head">
-      <h2>Directions</h2>
-      <div class="title-line"></div>
-    </div>
+    <div class="sub-head">Research Directions</div>
     <div class="dir-grid">
       <article class="dir">
         <div class="ph" style="background-image:url('assets/2.jpg')"></div>
@@ -479,7 +504,7 @@ footer .copy{grid-column:3;justify-self:end;font-size:13.5px;}
 </section>
 
 <!-- ===== NEWS ===== -->
-<section id="news">
+<section id="news" class="page">
   <div class="container">
     <div class="section-head">
       <h2>News</h2>
@@ -502,7 +527,7 @@ footer .copy{grid-column:3;justify-self:end;font-size:13.5px;}
 </section>
 
 <!-- ===== PEOPLE ===== -->
-<section id="people">
+<section id="people" class="page">
   <div class="container">
     <div class="section-head">
       <h2>People</h2>
@@ -761,7 +786,7 @@ footer .copy{grid-column:3;justify-self:end;font-size:13.5px;}
 </section>
 
 <!-- ===== PUBLICATIONS ===== -->
-<section id="publications">
+<section id="publications" class="page">
   <div class="container">
     <div class="section-head">
       <h2>Selected Publications</h2>
@@ -884,7 +909,7 @@ footer .copy{grid-column:3;justify-self:end;font-size:13.5px;}
 </section>
 
 <!-- ===== OPPORTUNITIES ===== -->
-<section id="opportunities">
+<section id="opportunities" class="page">
   <div class="container">
     <div class="section-head">
       <h2>Opportunities</h2>
@@ -902,14 +927,6 @@ footer .copy{grid-column:3;justify-self:end;font-size:13.5px;}
     </div>
   </div>
 </section>
-
-<!-- ===== FOOTER ===== -->
-<footer>
-  <div class="container footer-inner">
-    <span class="fbrand">MENS Lab｜具身心智与进化智能实验室</span>
-    <span class="copy">&copy; 2026 MENS Lab. All rights reserved.</span>
-  </div>
-</footer>
 
 <script>
 // ---- MENS sequential reveal ----
@@ -945,6 +962,55 @@ footer .copy{grid-column:3;justify-self:end;font-size:13.5px;}
   navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
   navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
 })();
+
+// ---- Paged router: nav links switch whole sections, one page at a time ----
+(function(){
+  const pages    = Array.from(document.querySelectorAll('.page'));
+  const navLinks = Array.from(document.querySelectorAll('.nav-links a'));
+  const brandEl  = document.querySelector('.brand');
+  const footer   = document.querySelector('footer');
+  if (!pages.length) return;
+
+  const ids = pages.map(p => p.id);
+
+  // Footer height feeds the page min-height, so a short page fills exactly one screen.
+  function measureFoot(){
+    document.documentElement.style.setProperty('--foot', footer ? footer.offsetHeight + 'px' : '0px');
+  }
+  measureFoot();
+  window.addEventListener('resize', measureFoot);
+  window.addEventListener('load', measureFoot);
+
+  // legacy deep links (e.g. #directions, now merged into About Us)
+  const aliases = { directions: 'about' };
+
+  function currentId(){
+    let h = (location.hash || '').replace('#', '');
+    if (aliases[h]) h = aliases[h];
+    return ids.indexOf(h) > -1 ? h : 'home';
+  }
+
+  function render(id){
+    if (ids.indexOf(id) === -1) id = 'home';
+    pages.forEach(p => p.classList.toggle('current', p.id === id));
+    navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+    if (brandEl) brandEl.classList.toggle('active', id === 'home');
+    window.scrollTo(0, 0);
+  }
+
+  window.addEventListener('hashchange', () => render(currentId()));
+
+  // Clicking the link of the page you are already on still jumps back to its top.
+  Array.from(document.querySelectorAll('.nav-links a, .brand, .scroll-ind')).forEach(a => {
+    a.addEventListener('click', () => {
+      const id = (a.getAttribute('href') || '').replace('#', '');
+      if (id && id === currentId()) window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+
+  render(currentId());
+})();
+
 </script>
 </body>
 </html>
